@@ -1,2 +1,0 @@
-# Capstone-frontend
-CapstoneProject-frontend
