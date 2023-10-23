@@ -5,8 +5,8 @@ import Create from "../../Pages/Report/Create";
 import Profile from "../../Pages/profile/Profile";
 import Show from "../../Pages/Showreport/Show";
 import Admin from "../admin/Admin";
-import Login from "../../Pages/user/Login";
-import Registration from "../../Pages/user/Registration";
+import Registration from "../../Pages/user/registration/Registration";
+import Login from "../../Pages/user/login/Login";
 
 const Header = () => {
   return (

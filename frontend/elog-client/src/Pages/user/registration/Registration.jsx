@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import "./registration.css";
 
 export default function Registration() {
@@ -33,9 +33,9 @@ export default function Registration() {
             placeholder="Confirm Password"
           />
         </div>
-        <button className="ml-3" type="submit">
+        <Button className="ml-3" size="lg" type="submit">
           Sign Up
-        </button>
+        </Button>
       </div>
     </Container>
   );

@@ -6,8 +6,8 @@ import Show from "../Pages/Showreport/Show";
 import NotFound from "../Pages/NotFound";
 import Admin from "./admin/Admin";
 import AuthRoute from "./auth/AuthRoute";
-import Login from "../Pages/user/Login";
-import Registration from "../Pages/user/Registration";
+import Login from "../Pages/user/login/Login";
+import Registration from "../Pages/user/registration/Registration";
 
 const Main = () => {
   return (
