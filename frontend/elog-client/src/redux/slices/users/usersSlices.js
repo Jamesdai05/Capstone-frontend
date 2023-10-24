@@ -27,6 +27,31 @@ export const registrationAction = createAsyncThunk(
   }
 );
 
+export const loginUserAction = createAsyncThunk(
+  "auth/login",
+  async(userData, { rejectWithValue, getState, dispatch })=>{
+      // http call
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      try{
+
+        const data = await axios.post(
+          "http://localhost:3002/auth/login",
+          user,
+          config
+      );
+      return data;
+    } catch (error) {
+      // if(!error && ! error.response)
+      if (!error?.response) {
+        throw error;
+      }
+  }
+);
+
 const usersSlices = createSlice({
   name: "users",
   initialState: {
