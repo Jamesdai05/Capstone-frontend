@@ -33,10 +33,18 @@ export default function Login() {
           ></Form.Check>
         </div>
         <div className="d-grid">
-          <Button variant="primary" size="lg" type="submit">
+          <Button
+            variant="primary"
+            className="d-md-block"
+            size="lg"
+            type="submit"
+          >
             Log In
           </Button>
         </div>
+        {/* <p className="forgot-password text-left">
+          Forgot <a href="abc">password?</a>
+        </p> */}
       </div>
     </Container>
   );
