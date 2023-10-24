@@ -82,6 +82,11 @@ const usersSlices = createSlice({
       state.appErr = undefined;
       state.serverErr = undefined;
     });
+    builder.addCase(loginUserAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
   },
 });
 

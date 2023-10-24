@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { loginUserAction } from "../../../redux/slices/users/usersSlices";
 
 const formSchema = Yup.object().shape({
   username: Yup.string().required("username is required!"),
@@ -22,7 +23,7 @@ export default function Login() {
       password: "",
     },
     onSubmit: (values) => {
-      dispatch(Login(values));
+      dispatch(loginUserAction(values));
       // console.log(values);
     },
     validationSchema: formSchema,
