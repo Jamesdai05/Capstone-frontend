@@ -39,7 +39,9 @@ export default function Registration() {
             id="username"
             placeholder="Username"
           />
-          {formik.touched.username && formik.errors.username}
+          <p className="text-danger">
+            {formik.touched.username && formik.errors.username}
+          </p>
         </div>
         <div className="mb-2">
           <Form.Label htmlFor="Email">Email</Form.Label>
@@ -51,7 +53,9 @@ export default function Registration() {
             id="email"
             placeholder="Email"
           />
-          {formik.touched.email && formik.errors.email}
+          <p className="text-danger">
+            {formik.touched.email && formik.errors.email}
+          </p>
         </div>
         <div className="mb-2">
           <Form.Label htmlFor="password">Password</Form.Label>
@@ -64,7 +68,9 @@ export default function Registration() {
             aria-describedby="passwordHelpBlock"
             placeholder="Password"
           />
-          {formik.touched.password && formik.errors.password}
+          <p className="text-danger">
+            {formik.touched.password && formik.errors.password}
+          </p>
         </div>
         <div className="mb-2">
           <Form.Label htmlFor="password">Confirm Password</Form.Label>
@@ -77,7 +83,9 @@ export default function Registration() {
             aria-describedby="passwordHelpBlock"
             placeholder="Confirm Password"
           />
-          {formik.touched.confirmPassword && formik.errors.confirmPassword}
+          <p className="text-danger">
+            {formik.touched.confirmPassword && formik.errors.confirmPassword}
+          </p>
         </div>
         <div className="d-grid">
           <Button className="ml-3" size="lg" type="submit">
