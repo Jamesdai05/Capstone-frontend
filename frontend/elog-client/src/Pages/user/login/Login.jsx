@@ -42,9 +42,9 @@ export default function Login() {
             Log In
           </Button>
         </div>
-        {/* <p className="forgot-password text-left">
+        <p className="forgot-password text-left">
           Forgot <a href="abc">password?</a>
-        </p> */}
+        </p>
       </div>
     </Container>
   );
