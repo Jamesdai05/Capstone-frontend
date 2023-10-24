@@ -61,6 +61,7 @@ export default function Registration() {
             type="text"
             id="username"
             placeholder="Username"
+            autoComplete="username"
           />
           <p className="text-danger">
             {formik.touched.username && formik.errors.username}
@@ -75,6 +76,7 @@ export default function Registration() {
             type="text"
             id="email"
             placeholder="Email"
+            autoComplete="email"
           />
           <p className="text-danger">
             {formik.touched.email && formik.errors.email}
@@ -90,6 +92,7 @@ export default function Registration() {
             id="password"
             aria-describedby="passwordHelpBlock"
             placeholder="Password"
+            autoComplete="password"
           />
           <p className="text-danger">
             {formik.touched.password && formik.errors.password}
@@ -105,6 +108,7 @@ export default function Registration() {
             id="confirm password"
             aria-describedby="passwordHelpBlock"
             placeholder="Confirm Password"
+            autoComplete="confirm-password"
           />
           <p className="text-danger">
             {formik.touched.confirmPassword && formik.errors.confirmPassword}

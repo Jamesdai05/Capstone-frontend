@@ -34,7 +34,13 @@ export const loginUserAction = createAsyncThunk(
       },
     };
     try {
-      const data = await axios.post(`${baseURL}/auth/login`, userData, config);
+      const { data } = await axios.post(
+        `${baseURL}/auth/login`,
+        userData,
+        config
+      );
+      console.log(data);
+      //save user in the localstorage
       localStorage.setItem("userInfo", JSON.stringify(userData));
       return data;
     } catch (error) {
@@ -71,6 +77,8 @@ const usersSlices = createSlice({
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;
     });
+
+    // login action
     builder.addCase(loginUserAction.pending, (state, action) => {
       state.loading = true;
       state.appErr = undefined;

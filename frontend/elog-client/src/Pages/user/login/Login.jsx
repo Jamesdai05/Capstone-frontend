@@ -33,7 +33,7 @@ export default function Login() {
     <Container id="main-container" className="mb-3 auth-wrapper">
       <form id="login" onSubmit={formik.handleSubmit}>
         <h1 className="mb-2 fs-3 fw-normal">Login</h1>
-        <div className="mb-2">
+        {/* <div className="mb-2">
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control
             value={formik.values.username}
@@ -42,11 +42,12 @@ export default function Login() {
             type="text"
             id="username"
             placeholder="Username"
+            autoComplete="username"
           />
           <p className="text-danger">
             {formik.touched.username && formik.errors.username}
           </p>
-        </div>
+        </div> */}
         <div className="mb-2">
           <Form.Label htmlFor="Email">Email</Form.Label>
           <Form.Control
@@ -56,6 +57,7 @@ export default function Login() {
             type="text"
             id="email"
             placeholder="Email"
+            autoComplete="email"
           />
           <p className="text-danger">
             {formik.touched.email && formik.errors.email}
@@ -71,6 +73,7 @@ export default function Login() {
             id="password"
             aria-describedby="passwordHelpBlock"
             placeholder="Password"
+            autoComplete="password"
           />
           <p className="text-danger">
             {formik.touched.password && formik.errors.password}
