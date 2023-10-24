@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap";
-import { registrationAction } from "../../../redux/slices/users/usersSlices";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./registration.css";
 import { Navigate } from "react-router-dom";
+import { registrationAction } from "../../../redux/slices/users/usersSlices";
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -37,7 +37,7 @@ export default function Registration() {
   console.log(storeData);
   const { loading, appErr, serverErr, registered } = storeData;
   // console.log(appErr, serverErr);
-  console.log(registered);
+  // console.log(registered);
 
   if (registered) {
     return <Navigate to="/profile" />;
