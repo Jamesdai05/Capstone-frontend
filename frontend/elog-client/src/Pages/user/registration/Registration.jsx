@@ -33,9 +33,11 @@ export default function Registration() {
             placeholder="Confirm Password"
           />
         </div>
-        <Button className="ml-3" size="lg" type="submit">
-          Sign Up
-        </Button>
+        <div className="d-grid">
+          <Button className="ml-3" size="lg" type="submit">
+            Sign Up
+          </Button>
+        </div>
       </div>
     </Container>
   );

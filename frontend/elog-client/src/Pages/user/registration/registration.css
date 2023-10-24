@@ -12,13 +12,13 @@ h1 {
   text-align: center;
 }
 
-#main-container {
+/* #main-container {
   place-items: center center;
   background-color: aqua;
-}
+} */
 
 #registration {
-  margin: 20% auto;
+  margin: 12% auto;
   max-width: 350px;
 }
 

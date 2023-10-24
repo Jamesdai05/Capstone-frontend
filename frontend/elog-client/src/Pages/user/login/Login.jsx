@@ -5,7 +5,7 @@ import "./login.css";
 
 export default function Login() {
   return (
-    <Container id="main-container" className="mb-3">
+    <Container id="main-container" className="mb-3 auth-wrapper">
       <div id="login">
         <h1 className="mb-2 fs-3 fw-normal">Login</h1>
         <div className="mb-2">
@@ -32,13 +32,8 @@ export default function Login() {
             label="Remember me"
           ></Form.Check>
         </div>
-        <div className="d-grid">
-          <Button
-            variant="primary"
-            className="d-md-block"
-            size="lg"
-            type="submit"
-          >
+        <div className="d-grid w-100">
+          <Button variant="primary" size="lg" type="submit">
             Log In
           </Button>
         </div>

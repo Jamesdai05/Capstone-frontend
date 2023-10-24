@@ -27,6 +27,7 @@ const Main = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
