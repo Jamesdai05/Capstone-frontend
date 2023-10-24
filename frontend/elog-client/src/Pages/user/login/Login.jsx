@@ -24,7 +24,7 @@ export default function Login() {
     },
     onSubmit: (values) => {
       dispatch(loginUserAction(values));
-      // console.log(values);
+      console.log(values);
     },
     validationSchema: formSchema,
   });

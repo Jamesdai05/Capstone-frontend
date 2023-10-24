@@ -41,7 +41,7 @@ export const loginUserAction = createAsyncThunk(
       );
       console.log(data);
       //save user in the localstorage
-      localStorage.setItem("userInfo", JSON.stringify(userData));
+      localStorage.setItem("userInfo", JSON.stringify(data));
       return data;
     } catch (error) {
       // if(!error && ! error.response)
@@ -86,7 +86,7 @@ const usersSlices = createSlice({
     });
     builder.addCase(loginUserAction.fulfilled, (state, action) => {
       state.usersAuth = action?.payload;
-      state.loading = true;
+      state.loading = false;
       state.appErr = undefined;
       state.serverErr = undefined;
     });
