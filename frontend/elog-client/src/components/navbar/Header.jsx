@@ -43,10 +43,14 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link as={Link} to={"/login"} element={<Login />}>
+              <Nav.Link as={Link} to={"/auth/login"} element={<Login />}>
                 Login
               </Nav.Link>
-              <Nav.Link as={Link} to={"/register"} element={<Registration />}>
+              <Nav.Link
+                as={Link}
+                to={"/auth/register"}
+                element={<Registration />}
+              >
                 SignUp
               </Nav.Link>
             </Nav>

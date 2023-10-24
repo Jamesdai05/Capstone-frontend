@@ -1,8 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap";
+import { registrationAction } from "../../../redux/slices/users/usersSlices";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./registration.css";
+import { Navigate } from "react-router-dom";
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -13,6 +16,9 @@ const formSchema = Yup.object().shape({
 });
 
 export default function Registration() {
+  //dispatch action
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -21,14 +27,31 @@ export default function Registration() {
       confirmPassword: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(registrationAction(values));
+      // console.log(values);
     },
     validationSchema: formSchema,
   });
+
+  const storeData = useSelector((store) => store?.users);
+  console.log(storeData);
+  const { loading, appErr, serverErr, registered } = storeData;
+  // console.log(appErr, serverErr);
+  console.log(registered);
+
+  if (registered) {
+    return <Navigate to="/profile" />;
+  }
+
   return (
     <Container id="main-container" className="mb-3">
       <form id="registration" onSubmit={formik.handleSubmit}>
         <h1 className="mb-2 fs-3 fw-normal">Sign Up</h1>
+        {appErr || serverErr ? (
+          <p className="text-danger">
+            {serverErr} {appErr}
+          </p>
+        ) : null}
         <div className="mb-2">
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control

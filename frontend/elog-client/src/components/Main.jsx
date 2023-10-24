@@ -25,8 +25,8 @@ const Main = () => {
             </AuthRoute>
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+        <Route path="auth/login" element={<Login />} />
+        <Route path="auth/register" element={<Registration />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

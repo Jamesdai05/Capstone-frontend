@@ -12,7 +12,7 @@ export const registrationAction = createAsyncThunk(
         },
       };
       const data = await axios.post(
-        "localhost:8080/auth/register",
+        "http://localhost:3002/auth/register",
         user,
         config
       );
