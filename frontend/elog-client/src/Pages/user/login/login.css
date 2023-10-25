@@ -24,6 +24,10 @@ label {
   font-weight: 500;
 }
 
+.label {
+  margin: 0.2rem;
+}
+
 h1 {
   text-align: center;
 }
@@ -33,13 +37,12 @@ h1 {
 }
 
 #login {
-  margin: 12% auto;
-  max-width: 350px;
-  /* background-image: ; */
+  margin: 10% auto;
+  max-width: 400px;
 }
 
-button {
-  margin: 0.5em auto;
+.login {
+  margin-left: 1rem;
 }
 
 .forgot-password,

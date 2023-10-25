@@ -60,7 +60,9 @@ export default function Login() {
           </p>
         </div> */}
         <div className="mb-2">
-          <Form.Label htmlFor="Email">Email</Form.Label>
+          <Form.Label className="label" htmlFor="Email">
+            Email
+          </Form.Label>
           <Form.Control
             value={formik.values.email}
             onChange={formik.handleChange("email")}
@@ -75,7 +77,9 @@ export default function Login() {
           </p>
         </div>
         <div className="mb-2">
-          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Label className="label" htmlFor="password">
+            Password
+          </Form.Label>
           <Form.Control
             value={formik.values.password}
             onChange={formik.handleChange("password")}
@@ -97,8 +101,8 @@ export default function Login() {
             label="Remember me"
           ></Form.Check>
         </div>
-        <div className="d-grid w-100">
-          <Button variant="primary" size="lg" type="submit">
+        <div className="d-grid">
+          <Button className="login" variant="primary" size="lg" type="submit">
             Log In
           </Button>
         </div>

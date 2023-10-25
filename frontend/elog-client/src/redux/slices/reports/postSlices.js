@@ -33,7 +33,7 @@ const postSlice = createSlice({
     });
     builder.addCase(createPostAction.fulfilled, (state, action) => {
       state.loading = false;
-      state.action = action?.payload;
+      state.postCreated = action?.payload;
       state.appErr = undefined;
       state.serverErr = undefined;
     });
