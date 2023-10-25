@@ -8,7 +8,7 @@ import Admin from "../admin/Admin";
 import Registration from "../../Pages/user/registration/Registration";
 import Login from "../../Pages/user/login/Login";
 
-const Header = () => {
+const Navigation = () => {
   return (
     <div>
       <Navbar
@@ -61,4 +61,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navigation;
