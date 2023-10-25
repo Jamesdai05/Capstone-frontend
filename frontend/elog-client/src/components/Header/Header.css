@@ -1,6 +1,7 @@
 .header {
-  margin-top: 60px;
+  margin-top: 20px;
   margin: 0 auto;
+  background-color: bisque;
 }
 
 .headertitle {
@@ -9,21 +10,24 @@
   align-items: center;
   color: #444;
 }
-.headerTitleSm {
+.titleSm {
   position: absolute;
   top: 18%;
   font-size: 20px;
 }
 
-.headerTitleLg {
+.titleLg {
   position: absolute;
+  text-align: center;
   top: 20%;
   font-size: 100px;
 }
 
-/* img {
-  /* max-width: 1000px; */
-  position: relative;
-  left: 50%
-  max-height: fit-content;
-} */
+img {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100vh;
+  height: 450px;
+  margin-top: 80px;
+  object-fit: cover;
+}
