@@ -1,3 +1,5 @@
 .main {
   display: flex;
+  margin: 0.2em 1em;
+  flex-flow: row;
 }

@@ -35,6 +35,9 @@ const Navigation = () => {
               <Nav.Link as={Link} to={"/show"} element={<Show />}>
                 Show
               </Nav.Link>
+              <Nav.Link as={Link} to={"/show"} element={<Show />}>
+                Update
+              </Nav.Link>
               <Nav.Link as={Link} to={"/profile"} element={<Profile />}>
                 Profile
               </Nav.Link>

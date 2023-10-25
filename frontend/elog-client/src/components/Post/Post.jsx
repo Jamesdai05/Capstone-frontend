@@ -1,16 +1,20 @@
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import image from "./img600.jpg";
 
 function Post() {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="./img600.jpg" />
+    <Card style={{ width: "20rem" }}>
+      <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nulla
+          est minus animi accusamus quis deleniti sequi nihil facilis commodi!
         </Card.Text>
-        <p>abc</p>
+        <Button variant="primary" className="text right">
+          View more
+        </Button>
       </Card.Body>
     </Card>
   );

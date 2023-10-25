@@ -6,6 +6,8 @@ export default function Posts() {
   return (
     <div className="report">
       <Post />
+      <Post />
+      <Post />
     </div>
   );
 }

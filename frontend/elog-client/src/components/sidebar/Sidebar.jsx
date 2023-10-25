@@ -1,5 +1,6 @@
 import React from "react";
 import "./sidebar.css";
+import image from "./image-733856.jpg";
 
 export default function Sidebar() {
   // const imgStyle = {
@@ -11,12 +12,12 @@ export default function Sidebar() {
       <div className="sideItem">
         <span className="sidebarTitle">About</span>
         <div className="imgcontent">
-          {/* <img
+          <img
             className="sidebarImg"
-            // src="public/img600.jpg"
-            src="https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg"
+            src={image}
+            // src="https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg"
             alt="gift"
-          /> */}
+          />
         </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, culpa.
