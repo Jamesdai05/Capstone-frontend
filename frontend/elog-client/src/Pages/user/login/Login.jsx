@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { useFormik } from "formik";
@@ -28,10 +29,21 @@ export default function Login() {
     validationSchema: formSchema,
   });
 
+  //redirct the user after login
+  const store = useSelector((state) => state?.users);
+  console.log(store);
+  const { usersAuth, loading, serverErr, appErr } = store;
+  if (usersAuth) return <Navigate to="/profile" />;
+
   return (
     <Container id="main-container" className="mb-3 auth-wrapper">
       <form id="login" onSubmit={formik.handleSubmit}>
         <h1 className="mb-2 fs-3 fw-normal">Login</h1>
+        {appErr || serverErr ? (
+          <p className="text-danger">
+            {serverErr}-{appErr}
+          </p>
+        ) : null}
         {/* <div className="mb-2">
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control

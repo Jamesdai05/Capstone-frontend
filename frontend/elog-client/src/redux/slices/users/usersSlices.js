@@ -53,10 +53,15 @@ export const loginUserAction = createAsyncThunk(
   }
 );
 
+//get userInfo from local storge and place into store.
+const userLoginFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
 const usersSlices = createSlice({
   name: "users",
   initialState: {
-    usersAuth: "login",
+    usersAuth: userLoginFromStorage,
   },
 
   extraReducers: (builder) => {

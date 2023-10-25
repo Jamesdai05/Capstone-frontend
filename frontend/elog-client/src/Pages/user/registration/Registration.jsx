@@ -40,7 +40,7 @@ export default function Registration() {
   // console.log(registered);
 
   if (registered) {
-    return <Navigate to="/profile" />;
+    return <Navigate to="/auth/login" />;
   }
 
   return (
@@ -49,7 +49,7 @@ export default function Registration() {
         <h1 className="mb-2 fs-3 fw-normal">Sign Up</h1>
         {appErr || serverErr ? (
           <p className="text-danger">
-            {serverErr} {appErr}
+            {serverErr} - {appErr}
           </p>
         ) : null}
         <div className="mb-2">
