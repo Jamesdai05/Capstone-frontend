@@ -1,0 +1,11 @@
+.sidebar {
+  flex: 3;
+  height: fit-content;
+}
+
+imgcontent {
+  width: 400px;
+}
+sidebarImg {
+  max-width: 400px;
+}

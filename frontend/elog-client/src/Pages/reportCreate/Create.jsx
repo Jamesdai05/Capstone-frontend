@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./report.module.css";
 
 export default function CreateReport() {
   return (
