@@ -33,10 +33,10 @@ const Navigation = () => {
                 Create
               </Nav.Link>
               <Nav.Link as={Link} to={"/show"} element={<Show />}>
-                Show
+                Update
               </Nav.Link>
               <Nav.Link as={Link} to={"/show"} element={<Show />}>
-                Update
+                Show
               </Nav.Link>
               <Nav.Link as={Link} to={"/profile"} element={<Profile />}>
                 Profile

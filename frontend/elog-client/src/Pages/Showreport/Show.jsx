@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./show.module.css";
+import "./show.css";
 
 export default function Show() {
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import "./report.css";
 
 export default function CreateReport() {
@@ -39,9 +40,7 @@ export default function CreateReport() {
             />
           </div>
           <div>
-            <button type="button" class="btn btn-primary">
-              Submit
-            </button>
+            <Button variant="primary">Submit</Button>
           </div>
         </form>
       </div>
