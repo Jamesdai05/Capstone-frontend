@@ -46,7 +46,7 @@ export default function Registration() {
   return (
     <Container id="main-container" className="mb-3">
       <form id="registration" onSubmit={formik.handleSubmit}>
-        <h1 className="mb-2 fs-3 fw-normal">Sign Up</h1>
+        <h1 className="mb-2">Sign Up</h1>
         {appErr || serverErr ? (
           <p className="text-danger">
             {serverErr} - {appErr}
@@ -60,6 +60,7 @@ export default function Registration() {
             onBlur={formik.handleBlur("username")}
             type="text"
             id="username"
+            name="username"
             placeholder="Username"
             autoComplete="username"
           />
@@ -75,6 +76,7 @@ export default function Registration() {
             onBlur={formik.handleBlur("email")}
             type="text"
             id="email"
+            name="email"
             placeholder="Email"
             autoComplete="email"
           />
@@ -90,6 +92,7 @@ export default function Registration() {
             onBlur={formik.handleBlur("password")}
             type="password"
             id="password"
+            name="password"
             aria-describedby="passwordHelpBlock"
             placeholder="Password"
             autoComplete="password"
@@ -106,6 +109,7 @@ export default function Registration() {
             onBlur={formik.handleBlur("confirmPassword")}
             type="password"
             id="confirm password"
+            name="confirm password"
             aria-describedby="passwordHelpBlock"
             placeholder="Confirm Password"
             autoComplete="confirm-password"
