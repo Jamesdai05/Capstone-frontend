@@ -19,7 +19,7 @@ export default function CreateReport() {
 
   const formik = useFormik({
     initialValues: {
-      content: "",
+      title: "",
       category: "",
       description: "",
     },
