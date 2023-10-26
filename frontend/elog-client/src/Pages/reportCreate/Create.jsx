@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import "./report.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
-import { createPostAction } from "../../redux/slices/reports/postSlices";
+// import { createPostAction } from "../../redux/slices/reports/postSlices";
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -15,18 +15,17 @@ const formSchema = Yup.object().shape({
 });
 
 export default function CreateReport() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
       title: "",
-      category: "",
+      // category: "",
       description: "",
     },
     onSubmit: (values) => {
       console.log(values);
       // dispatch(createPostAction(values));
-      // console.log(values);
     },
     validationSchema: formSchema,
   });
@@ -40,6 +39,7 @@ export default function CreateReport() {
           <div className="creat-title">
             <label htmlFor="Title">Title:</label>
             <br></br>
+            {/* will be set to the selection bar later on */}
             <input
               value={formik.values.title}
               onChange={formik.handleChange("title")}
@@ -59,9 +59,9 @@ export default function CreateReport() {
             <br></br>
             <input
               type="text"
-              value={formik.values.category}
-              onChange={formik.handleChange("category")}
-              onBlur={formik.handleBlur("category")}
+              // value={formik.values.category}
+              // onChange={formik.handleChange("category")}
+              // onBlur={formik.handleBlur("category")}
               className="createReport"
               id="category"
               name="category"
