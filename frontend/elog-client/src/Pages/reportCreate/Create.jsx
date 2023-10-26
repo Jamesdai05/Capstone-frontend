@@ -11,7 +11,6 @@ import { createPostAction } from "../../redux/slices/reports/postSlices";
 //form validation
 const formSchema = Yup.object().shape({
   title: Yup.string().required("title is required!"),
-  category: Yup.string().required("category is required!"),
   description: Yup.string().required("Description is required!"),
 });
 
@@ -52,7 +51,9 @@ export default function CreateReport() {
               name="title"
               autoComplete="title"
             />
+            <p className="text-danger">{formik?.touched?.title}</p>
           </div>
+
           <div>
             <label htmlFor="cat">Category:</label>
             <br></br>
@@ -82,6 +83,7 @@ export default function CreateReport() {
               cols="20"
               placeholder="Enter the content here"
             />
+            <p className="text-danger">{formik?.touched?.description}</p>
           </div>
           <div>
             <Button variant="primary">Submit</Button>
