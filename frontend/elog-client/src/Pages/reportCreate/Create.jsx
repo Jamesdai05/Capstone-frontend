@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./report.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-// import { createPostAction } from "../../redux/slices/reports/postSlices";
+import { createPostAction } from "../../redux/slices/reports/postSlices";
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -15,7 +15,7 @@ const formSchema = Yup.object().shape({
 });
 
 export default function CreateReport() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -24,8 +24,8 @@ export default function CreateReport() {
       description: "",
     },
     onSubmit: (values) => {
-      console.log(values);
-      // dispatch(createPostAction(values));
+      // console.log(values);
+      dispatch(createPostAction(values));
     },
     validationSchema: formSchema,
   });
@@ -86,7 +86,9 @@ export default function CreateReport() {
             <p className="text-danger">{formik?.touched?.description}</p>
           </div>
           <div>
-            <Button variant="primary">Submit</Button>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
           </div>
         </form>
       </div>
