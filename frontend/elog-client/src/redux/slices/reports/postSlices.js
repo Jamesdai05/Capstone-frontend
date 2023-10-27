@@ -9,7 +9,7 @@ export const createPostAction = createAsyncThunk(
     const { usersAuth } = user;
     const config = {
       headers: {
-        Authorization: `Bearer ${usersAuth.token}`,
+        Authorization: `Bearer ${usersAuth?.token}`,
       },
     };
     try {

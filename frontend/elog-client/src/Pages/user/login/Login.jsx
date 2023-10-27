@@ -21,6 +21,7 @@ export default function Login() {
     initialValues: {
       email: "",
       password: "",
+      // user:""
     },
     onSubmit: (values) => {
       dispatch(loginUserAction(values));
@@ -31,7 +32,6 @@ export default function Login() {
 
   //redirct the user after login
   const store = useSelector((state) => state?.users);
-  console.log(store);
   const { usersAuth, loading, serverErr, appErr } = store;
   if (usersAuth) return <Navigate to="/profile" />;
 
@@ -50,6 +50,7 @@ export default function Login() {
             value={formik.values.username}
             onChange={formik.handleChange("username")}
             onBlur={formik.handleBlur("username")}
+            read= {true}
             type="text"
             id="username"
             placeholder="Username"

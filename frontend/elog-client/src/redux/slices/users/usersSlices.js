@@ -53,7 +53,7 @@ export const loginUserAction = createAsyncThunk(
   }
 );
 
-//get userInfo from local storge and place into store.
+//get userInfo from local storge.
 const userLoginFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
@@ -103,6 +103,22 @@ const usersSlices = createSlice({
   },
 });
 
-//login
+// const initialState = {
+//   userId: null,
+// };
+
+// export  const userReducer(state = initialState, action) {
+//   switch (action.type) {
+//     case "Change_user":
+//       return {
+//         ...state,
+//         user: action.payload,
+//       }
+//     default:
+//       return state
+//   }
+// }
+
+
 
 export default usersSlices.reducer;

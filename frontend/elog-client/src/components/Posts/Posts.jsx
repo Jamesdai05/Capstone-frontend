@@ -4,7 +4,9 @@ import "./posts.css";
 
 export default function Posts() {
   return (
-    <div className="report">
+    <div className="reports">
+      <Post />
+      <Post />
       <Post />
       <Post />
       <Post />

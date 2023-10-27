@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import "./report.css";
@@ -13,16 +13,28 @@ import { createPostAction } from "../../redux/slices/reports/postSlices";
 const formSchema = Yup.object().shape({
   title: Yup.string().required("title is required!"),
   description: Yup.string().required("Description is required!"),
+  user: Yup.string().required("User is required!"),
 });
 
 export default function CreateReport() {
   const dispatch = useDispatch();
+  // const [userInfo, setUserInfo] = useState("");
+
+  // useEffect(() => {
+  //   const temp = JSON.parse(localStorage.getItem("userInfo"));
+  //   console.log(temp);
+  //   // setUserInfo(temp);
+  //   setUserInfo(temp.user);
+  //   console.log(temp.user);
+  // }, []);
+  // const userId = userInfo.user
 
   const formik = useFormik({
     initialValues: {
       title: "",
       // category: "",
       description: "",
+      user: JSON.parse(localStorage.getItem("userInfo")).user,
     },
     onSubmit: (values) => {
       // console.log(values);
@@ -37,10 +49,38 @@ export default function CreateReport() {
       </div>
       <div>
         <form id="createReport" onSubmit={formik.handleSubmit}>
-          <div id="selection">
-            <Selection />
+          {/* <div className="prepopulate">
+            <label htmlFor="UserId">USER ID</label><br></br>
+            <input
+              value={formik.values.userid}
+              onChange={formik.handleChange("userid")}
+              onBlur={formik.handleBlur("userid")}
+              readOnly = {true}
+              className="createReport"
+              type="text"
+              placeholder="USER ID"
+              id="userid"
+              name="userid"
+              autoComplete="userid"
+            />
+          </div> */}
+          <div className="cat">
+            <label htmlFor="Category">Category:</label>
+            <br></br>
+            <input
+              // value={formik.values.category}
+              // onChange={formik.handleChange("category")}
+              // onBlur={formik.handleBlur("category")}
+              className="createReport"
+              type="text"
+              placeholder="Enter the category here"
+              id="category"
+              name="category"
+              autoComplete="category"
+            />
+            {/* <Selection /> */}
           </div>
-          <div className="creat-title">
+          <div className="create-title">
             <label htmlFor="Title">Title:</label>
             <br></br>
             {/* will be set to the selection bar later on */}

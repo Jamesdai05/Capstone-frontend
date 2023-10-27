@@ -12,7 +12,7 @@ function Post() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nulla
           est minus animi accusamus quis deleniti sequi nihil facilis commodi!
         </Card.Text>
-        <Button variant="primary" className="text right">
+        <Button variant="primary" className="text right" type="submit">
           View more
         </Button>
       </Card.Body>

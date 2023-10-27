@@ -11,7 +11,6 @@ export default function Home() {
       <Header />
       <div className="main">
         <Posts />
-        {/* <Sidebar /> */}
       </div>
       <Footer />
     </div>
