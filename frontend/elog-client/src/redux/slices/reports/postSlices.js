@@ -13,7 +13,10 @@ export const createPostAction = createAsyncThunk(
       },
     };
     try {
-      const { data } = await axios.post(`${baseURL}/api/posts`, post, config);
+      // console.log("abc");
+      const data = await axios.post(`${baseURL}/api/posts`, post, config);
+      // console.log("2");
+      // console.log(data);
       return data;
     } catch (error) {
       if (!error?.response) throw error;

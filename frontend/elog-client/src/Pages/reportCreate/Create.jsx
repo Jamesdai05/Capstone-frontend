@@ -5,6 +5,7 @@ import "./report.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Navigate } from "react-router-dom";
+import Selection from "../../components/Dropdown/Dropdown";
 
 import { createPostAction } from "../../redux/slices/reports/postSlices";
 
@@ -35,7 +36,10 @@ export default function CreateReport() {
         <h1>Report creation</h1>
       </div>
       <div>
-        <form action="" onSubmit={formik.handleSubmit}>
+        <form id="createReport" onSubmit={formik.handleSubmit}>
+          <div id="selection">
+            <Selection />
+          </div>
           <div className="creat-title">
             <label htmlFor="Title">Title:</label>
             <br></br>
@@ -54,20 +58,6 @@ export default function CreateReport() {
             <p className="text-danger">{formik?.touched?.title}</p>
           </div>
 
-          <div>
-            <label htmlFor="cat">Category:</label>
-            <br></br>
-            <input
-              type="text"
-              // value={formik.values.category}
-              // onChange={formik.handleChange("category")}
-              // onBlur={formik.handleBlur("category")}
-              className="createReport"
-              id="category"
-              name="category"
-              placeholder="Enter the category"
-            />
-          </div>
           <div className="form">
             <label htmlFor="description">Description:</label>
             <br></br>

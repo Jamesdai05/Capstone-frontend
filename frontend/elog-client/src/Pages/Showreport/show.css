@@ -1,0 +1,11 @@
+showContainer,
+.show-Main {
+  display: block;
+  margin: 1rem 10em;
+}
+
+.showSub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
