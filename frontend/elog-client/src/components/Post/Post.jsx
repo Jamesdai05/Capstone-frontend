@@ -1,20 +1,22 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import image from "./img600.jpg";
+// import image from "./img600.jpg";
+import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
+import Postdetail from "./Postdetails/Postdetail";
 
-function Post() {
+function Post(props) {
   return (
-    <Card style={{ width: "20rem" }} className="card">
-      <Card.Img variant="top" src={image} />
+    <Card style={{ width: "20rem", height: "18rem" }} className="card">
+      {/* <Card.Img variant="top" src={image} /> */}
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nulla
-          est minus animi accusamus quis deleniti sequi nihil facilis commodi!
-        </Card.Text>
-        <Button variant="primary" className="text right" type="submit">
-          View more
-        </Button>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Text className="text">{props.description}</Card.Text>
+        <Nav.Link as={Link} to={"/show"} element={<Postdetail />}>
+          <Button variant="primary" className="text right">
+            view more
+          </Button>
+        </Nav.Link>
       </Card.Body>
     </Card>
   );

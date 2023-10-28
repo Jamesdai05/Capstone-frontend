@@ -1,5 +1,6 @@
 import React from "react";
 import "./show.css";
+import { Button } from "react-bootstrap";
 
 export default function Show() {
   return (
@@ -7,7 +8,7 @@ export default function Show() {
       <h1 className="reportTitle">Users report</h1>
       <div className="show-sub">
         <div>
-          <p className="postBy">PostedBy:{}</p>
+          <p className="postBy">PostedBy:</p>
         </div>
         <div>
           <p className="post-at">Posted at:</p>
@@ -26,6 +27,14 @@ export default function Show() {
           ratione excepturi est necessitatibus dolore vitae nemo! Consequatur
           debitis eos fuga quasi dolorem ratione voluptas ipsum!
         </p>
+      </div>
+      <div>
+        <Button variant="primary" type="submit">
+          Update
+        </Button>
+        <Button variant="primary" type="submit">
+          Delete
+        </Button>
       </div>
     </div>
   );

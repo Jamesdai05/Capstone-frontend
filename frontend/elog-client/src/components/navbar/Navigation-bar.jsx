@@ -2,11 +2,11 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Home from "../../Pages/Home/Homepage";
 import Profile from "../../Pages/profile/Profile";
-import Show from "../../Pages/Showreport/Show";
 import Admin from "../admin/Admin";
 import Registration from "../../Pages/user/registration/Registration";
 import Login from "../../Pages/user/login/Login";
 import CreateReport from "../../Pages/reportCreate/Create";
+import Postdetail from "../Post/Postdetails/Postdetail";
 
 const Navigation = () => {
   return (
@@ -32,7 +32,7 @@ const Navigation = () => {
               <Nav.Link as={Link} to={"/create"} element={<CreateReport />}>
                 Create
               </Nav.Link>
-              <Nav.Link as={Link} to={"/show"} element={<Show />}>
+              <Nav.Link as={Link} to={"/show"} element={<Postdetail />}>
                 Show
               </Nav.Link>
               <Nav.Link as={Link} to={"/profile"} element={<Profile />}>

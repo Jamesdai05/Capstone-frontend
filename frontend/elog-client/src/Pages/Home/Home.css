@@ -1,7 +1,8 @@
 .main {
   display: flex;
   margin: 1em auto;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }

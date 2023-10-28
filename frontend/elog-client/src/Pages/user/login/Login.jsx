@@ -36,15 +36,16 @@ export default function Login() {
   if (usersAuth) return <Navigate to="/profile" />;
 
   return (
-    <Container id="main-container" className="mb-3 auth-wrapper">
-      <form id="login" onSubmit={formik.handleSubmit}>
-        <h1 className="mb-2 fs-3 fw-normal">Login</h1>
-        {appErr || serverErr ? (
-          <p className="text-danger">
-            {serverErr}-{appErr}
-          </p>
-        ) : null}
-        {/* <div className="mb-2">
+    <div className="auth">
+      <Container id="main-container" className="mb-3 auth-wrapper">
+        <form id="login" onSubmit={formik.handleSubmit}>
+          <h1 className="mb-2 fs-3 fw-normal">Login</h1>
+          {appErr || serverErr ? (
+            <p className="text-danger">
+              {serverErr}-{appErr}
+            </p>
+          ) : null}
+          {/* <div className="mb-2">
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control
             value={formik.values.username}
@@ -60,57 +61,58 @@ export default function Login() {
             {formik.touched.username && formik.errors.username}
           </p>
         </div> */}
-        <div className="mb-2">
-          <Form.Label className="label" htmlFor="Email">
-            Email
-          </Form.Label>
-          <Form.Control
-            value={formik.values.email}
-            onChange={formik.handleChange("email")}
-            onBlur={formik.handleBlur("email")}
-            type="text"
-            id="email"
-            placeholder="Email"
-            autoComplete="email"
-          />
-          <p className="text-danger">
-            {formik.touched.email && formik.errors.email}
+          <div className="mb-2">
+            <Form.Label className="label" htmlFor="Email">
+              Email
+            </Form.Label>
+            <Form.Control
+              value={formik.values.email}
+              onChange={formik.handleChange("email")}
+              onBlur={formik.handleBlur("email")}
+              type="text"
+              id="email"
+              placeholder="Email"
+              autoComplete="email"
+            />
+            <p className="text-danger">
+              {formik.touched.email && formik.errors.email}
+            </p>
+          </div>
+          <div className="mb-2">
+            <Form.Label className="label" htmlFor="password">
+              Password
+            </Form.Label>
+            <Form.Control
+              value={formik.values.password}
+              onChange={formik.handleChange("password")}
+              onBlur={formik.handleBlur("password")}
+              type="password"
+              id="password"
+              aria-describedby="passwordHelpBlock"
+              placeholder="Password"
+              autoComplete="password"
+            />
+            <p className="text-danger">
+              {formik.touched.password && formik.errors.password}
+            </p>
+          </div>
+          <div>
+            <Form.Check // prettier-ignore
+              type="checkbox"
+              id="checkbox"
+              label="Remember me"
+            ></Form.Check>
+          </div>
+          <div className="d-grid">
+            <Button className="login" variant="primary" size="lg" type="submit">
+              Log In
+            </Button>
+          </div>
+          <p className="forgot-password text-left">
+            Forgot <a href="abc">password?</a>
           </p>
-        </div>
-        <div className="mb-2">
-          <Form.Label className="label" htmlFor="password">
-            Password
-          </Form.Label>
-          <Form.Control
-            value={formik.values.password}
-            onChange={formik.handleChange("password")}
-            onBlur={formik.handleBlur("password")}
-            type="password"
-            id="password"
-            aria-describedby="passwordHelpBlock"
-            placeholder="Password"
-            autoComplete="password"
-          />
-          <p className="text-danger">
-            {formik.touched.password && formik.errors.password}
-          </p>
-        </div>
-        <div>
-          <Form.Check // prettier-ignore
-            type="checkbox"
-            id="checkbox"
-            label="Remember me"
-          ></Form.Check>
-        </div>
-        <div className="d-grid">
-          <Button className="login" variant="primary" size="lg" type="submit">
-            Log In
-          </Button>
-        </div>
-        <p className="forgot-password text-left">
-          Forgot <a href="abc">password?</a>
-        </p>
-      </form>
-    </Container>
+        </form>
+      </Container>
+    </div>
   );
 }
