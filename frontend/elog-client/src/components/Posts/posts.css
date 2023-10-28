@@ -3,4 +3,5 @@
   justify-content: space-around;
   margin-bottom: 1em;
   width: 90%;
+  flex-wrap: wrap;
 }

@@ -4,7 +4,7 @@ import image from "./img600.jpg";
 
 function Post() {
   return (
-    <Card style={{ width: "20rem" }}>
+    <Card style={{ width: "20rem" }} className="card">
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
