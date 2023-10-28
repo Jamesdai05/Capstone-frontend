@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home/Homepage";
 import Profile from "../Pages/profile/Profile";
-import Show from "../Pages/Showreport/Show";
 import NotFound from "../Pages/NotFound";
 import Admin from "./admin/Admin";
 import AuthRoute from "./auth/AuthRoute";
 import Login from "../Pages/user/login/Login";
 import Registration from "../Pages/user/registration/Registration";
 import CreateReport from "../Pages/reportCreate/Create";
+import Postdetail from "./Post/Postdetails/Postdetail";
 
 const Main = () => {
   return (
@@ -15,7 +15,7 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateReport />} />
-        <Route path="/show" element={<Show />} />
+        {/* <Route path="/show" element={<Postdetail />} /> */}
         <Route path="/profile" element={<Profile />} />
         <Route
           path="/admin"
@@ -27,7 +27,7 @@ const Main = () => {
         />
         <Route path="auth/login" element={<Login />} />
         <Route path="auth/register" element={<Registration />} />
-
+        <Route path="posts/:id" element={<Postdetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

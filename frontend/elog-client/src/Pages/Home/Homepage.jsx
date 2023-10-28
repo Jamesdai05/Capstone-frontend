@@ -24,14 +24,15 @@ export default function Home() {
     makeApiCall();
   }, []);
 
-  const posts = reports.map((element) => (
+  const posts = reports.map((element, index) => (
     <Post
       title={element.title}
-      key={element._id}
+      key={index}
       description={element.description}
       image={element.image}
       cat={element.categories}
       time={element.createAt}
+      id={element._id}
     />
   ));
   // console.log(posts);

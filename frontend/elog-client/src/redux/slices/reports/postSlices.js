@@ -25,7 +25,19 @@ export const createPostAction = createAsyncThunk(
   }
 );
 
-//slice
+//for post details
+export const fetchPostDetailsAction = createAsyncThunk(
+  "post/detail",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    try {
+      const data = await axios.get(`${baseURL}/api/posts/${id}`);
+      return data;
+    } catch (error) {
+      if (!error?.response) throw error;
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
 
 const postSlice = createSlice({
   name: "post",
@@ -41,6 +53,21 @@ const postSlice = createSlice({
       state.serverErr = undefined;
     });
     builder.addCase(createPostAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
+    //fetch post Details
+    builder.addCase(fetchPostDetailsAction.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchPostDetailsAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.postDetails = action?.payload;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(fetchPostDetailsAction.rejected, (state, action) => {
       state.loading = false;
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;

@@ -32,9 +32,9 @@ const Navigation = () => {
               <Nav.Link as={Link} to={"/create"} element={<CreateReport />}>
                 Create
               </Nav.Link>
-              <Nav.Link as={Link} to={"/show"} element={<Postdetail />}>
+              {/* <Nav.Link as={Link} to={"/show"} element={<Postdetail />}>
                 Show
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link as={Link} to={"/profile"} element={<Profile />}>
                 Profile
               </Nav.Link>

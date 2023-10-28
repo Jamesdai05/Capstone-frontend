@@ -6,3 +6,6 @@
   min-height: 150px;
   margin-bottom: 0.2em;
 }
+.viewmore {
+  position: fixed;
+}

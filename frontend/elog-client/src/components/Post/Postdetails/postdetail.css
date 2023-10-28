@@ -1,1 +1,23 @@
+.show-sub {
+  display: flex;
+  justify-content: space-around;
+}
 
+.postContainer {
+  display: flex;
+  margin: 0.5em auto;
+  padding: 0.2em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0.8em;
+}
+
+/* Button {
+  margin-right: 1em;
+} */
