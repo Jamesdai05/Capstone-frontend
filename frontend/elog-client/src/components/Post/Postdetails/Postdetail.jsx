@@ -6,12 +6,39 @@ import { Button, Nav } from "react-bootstrap";
 import { baseURL } from "../../../utils/baseUrl";
 import { Link, useParams } from "react-router-dom";
 import UpdateReport from "../updateComp/UpdateReport";
-// import Test from "../updateComp/Test";
-// import axios from "axios";
+// import   Test from "../updateComp/Test";
+import axios from "axios";
 
 export default function Postdetail() {
   const [report, setReport] = useState({});
   const { id } = useParams();
+
+  const deleteFormData = async (data) => {
+    const client = axios.create({
+      baseURL: `${baseURL}`,
+    });
+
+    const response = await client.delete(`/api/posts/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+    });
+
+    return response;
+  };
+
+  const handleSubmit = async (Data) => {
+    const response = await deleteFormData(Data);
+
+    if (response.status === 200) {
+      // The API call was successful.
+      console.log("Report has been deleted..");
+    } else {
+      // Handle the error.
+      console.log("Report deleted unsuccessful!");
+    }
+  };
 
   useEffect(() => {
     const makeApiCall = () => {
@@ -131,7 +158,9 @@ export default function Postdetail() {
             </Nav.Link>
           </div>
           <div>
-            <Button variant="primary">Delete</Button>
+            <Button onclick={handleSubmit} variant="primary">
+              Delete
+            </Button>
           </div>
         </div>
       </div>
