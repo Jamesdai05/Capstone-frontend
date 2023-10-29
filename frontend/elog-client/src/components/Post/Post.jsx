@@ -22,7 +22,7 @@ function Post({ description, title, id }) {
         <Card.Title>{title}</Card.Title>
         <Card.Text className="text">{description}</Card.Text>
         <div className="viewmore">
-          <Nav.Link as={Link} to={`/posts/${id}`} element={<Postdetail />}>
+          <Nav.Link as={Link} to={`posts/${id}`} element={<Postdetail />}>
             <Button variant="primary" className="text right">
               view more
             </Button>

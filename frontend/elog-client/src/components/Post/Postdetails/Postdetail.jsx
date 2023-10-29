@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./postdetail.css";
 import { Button } from "react-bootstrap";
-// import { fetchPostDetailsAction } from "../../../redux/slices/reports/postSlices";
-// import { useDispatch, useSelector } from "react-redux";
+import { fetchPostDetailsAction } from "../../../redux/slices/reports/postSlices";
+import { useDispatch, useSelector } from "react-redux";
+import { baseURL } from "../../../utils/baseUrl";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-export default function Postdetail({
-  match: {
-    params: { id },
-  },
-}) {
+export default function Postdetail() {
   // console.log(props);
+  //   match: {
+  //     params: { id },
+  //   },
+  // }
 
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -18,20 +21,63 @@ export default function Postdetail({
   // // select post details from store
   // const post = useSelector((state) => state?.post);
   // const { postDetails, loading, appErr, serverErr } = post;
+  // console.log(post);
+  const [report, setReport] = useState({});
+  const { id } = useParams();
+
+  // const makeApiCall = () => {
+  //   fetch(`${baseURL}/api/posts/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setReport(data);
+  //     });
+  // };
+
+  useEffect(() => {
+    const makeApiCall = () => {
+      fetch(`${baseURL}/api/posts/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setReport(data);
+        });
+    };
+    makeApiCall();
+    // axios
+    //   .get(`${baseURL}/api/posts/${id}`)
+    //   .then((response) => {
+    //     setReport(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    // console.log(report);
+    // console.log(report.title);
+    // console.log(report.createdAt);
+    // console.log(typeof report.user.username);
+    report.user?.username
+      ? console.log(report.user?.username)
+      : console.log("null");
+  }, []);
+
   return (
     <div className="showContainer">
-      <h1 className="reportTitle">user Report</h1>
+      <h1 className="reportTitle">{report.title}</h1>
       <div className="show-sub">
         <div>
-          <p className="postBy">PostedBy:{}</p>
+          <p className="postBy">
+            {report.user?.username ? report.user.username : null}
+          </p>
         </div>
         <div>
-          <p className="post-at">Posted at:{}</p>
+          <p className="post-at">{report.createdAt}</p>
         </div>
       </div>
       <div>
         <p className="show-Main">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta autem
+          <p>{report.description}</p>
+          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta autem
           magni facilis esse quos saepe non pariatur maxime, similique
           distinctio illum eius nobis, nemo sapiente unde iusto nihil temporibus
           quam dicta consequuntur eos eum nulla perferendis? Eum eos recusandae
@@ -91,7 +137,7 @@ export default function Postdetail({
           corrupti nesciunt eos accusantium nobis minus assumenda impedit natus
           ea! Nulla reprehenderit dicta aspernatur sunt suscipit adipisci
           explicabo reiciendis libero fugiat, ex voluptatem, velit repellat, non
-          praesentium repudiandae!
+          praesentium repudiandae! */}
         </p>
 
         <div id="button">

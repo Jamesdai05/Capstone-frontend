@@ -15,7 +15,7 @@ export default function Home() {
     fetch(`${baseURL}/api/posts`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setReports(data);
       });
   };
@@ -29,7 +29,7 @@ export default function Home() {
       title={element.title}
       key={index}
       description={element.description}
-      image={element.image}
+      // image={element.image}
       cat={element.categories}
       time={element.createAt}
       id={element._id}

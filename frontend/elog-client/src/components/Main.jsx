@@ -8,6 +8,7 @@ import Login from "../Pages/user/login/Login";
 import Registration from "../Pages/user/registration/Registration";
 import CreateReport from "../Pages/reportCreate/Create";
 import Postdetail from "./Post/Postdetails/Postdetail";
+import UpdateReport from "./Post/updateComp/UpdateReport";
 
 const Main = () => {
   return (
@@ -28,6 +29,7 @@ const Main = () => {
         <Route path="auth/login" element={<Login />} />
         <Route path="auth/register" element={<Registration />} />
         <Route path="posts/:id" element={<Postdetail />} />
+        <Route path="updateposts/:id" element={<UpdateReport />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
