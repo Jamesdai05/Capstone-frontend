@@ -28,20 +28,28 @@ export default function UpdateReport() {
     },
     validationSchema: formSchema,
 
-    onSubmit: (values) => {
-      console.log(values);
-      // const handleSubmit = (values) => {
-      //   // Submit the form data to the server.
-      //   fetch(`${baseURL}/api/posts/${id}`, {
-      //     method: "PUT",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(values),
-      //   });
-      // };
-      setReport(values);
-      // console.log(report);
+    onSubmit: async (values) => {
+      try {
+        // Submit the form data to the server.
+        const response = await fetch(`${baseURL}/api/posts/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        });
+        if (!response.ok) {
+          throw new Error("Failed to submit form");
+        }
+        console.log("Form submitted successfully");
+      } catch (error) {
+        console.log("Error submitting form:", error);
+      }
+      // console.log(values);
+      //     setReport(values);
+      //     // console.log(report);
+      //   },
+      // });
     },
   });
 
