@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
-const formSchema = Yup.object({
+const formSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
   description: Yup.string().required("Description is required"),
   // category: Yup.object().required("Category is required"),
@@ -12,7 +12,7 @@ const formSchema = Yup.object({
 
 export default function UpdateReport(props) {
   const formik = useFormik({
-    intialValues: {
+    initialValues: {
       title: " ",
       description: " ",
       category: " ",
