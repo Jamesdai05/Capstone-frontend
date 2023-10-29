@@ -10,31 +10,8 @@ import UpdateReport from "../updateComp/UpdateReport";
 // import axios from "axios";
 
 export default function Postdetail() {
-  // console.log(props);
-  //   match: {
-  //     params: { id },
-  //   },
-  // }
-
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchPostDetailsAction(id));
-  // }, [id, dispatch]);
-  // // select post details from store
-  // const post = useSelector((state) => state?.post);
-  // const { postDetails, loading, appErr, serverErr } = post;
-  // console.log(post);
   const [report, setReport] = useState({});
   const { id } = useParams();
-
-  // const makeApiCall = () => {
-  //   fetch(`${baseURL}/api/posts/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setReport(data);
-  //     });
-  // };
 
   useEffect(() => {
     const makeApiCall = () => {

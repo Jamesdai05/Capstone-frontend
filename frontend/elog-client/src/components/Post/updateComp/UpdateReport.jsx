@@ -24,7 +24,8 @@ export default function UpdateReport() {
     initialValues: {
       title: report.title,
       description: report.description,
-      category: "",
+      category: report.category,
+      // user: JSON.parse(localStorage.getItem("userInfo")).user,
     },
     validationSchema: formSchema,
 
@@ -61,6 +62,7 @@ export default function UpdateReport() {
           console.log(data);
           formik.setFieldValue("title", data.title);
           formik.setFieldValue("description", data.description);
+          formik.setFieldValue("category", data.category);
           setReport(data);
         });
     };
