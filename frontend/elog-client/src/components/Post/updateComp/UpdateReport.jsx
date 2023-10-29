@@ -1,8 +1,7 @@
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
 import * as Yup from "yup";
 
 const formSchema = Yup.object({
@@ -11,8 +10,19 @@ const formSchema = Yup.object({
   // category: Yup.object().required("Category is required"),
 });
 
-export default function UpdateReport() {
-  const formik = useFormik({});
+export default function UpdateReport(props) {
+  const formik = useFormik({
+    intialValues: {
+      title: " ",
+      description: " ",
+      category: " ",
+    },
+
+    onSubmit: (values) => {
+      // console.log(values)
+    },
+  });
+
   return (
     <>
       <div>
@@ -46,7 +56,7 @@ export default function UpdateReport() {
             {/* <Selection /> */}
           </div>
           <div className="create-title">
-            <label htmlFor="Title">Title:</label>
+            <label htmlFor="title">Title:</label>
             <br></br>
             {/* will be set to the selection bar later on */}
             <input
@@ -62,14 +72,13 @@ export default function UpdateReport() {
             />
             <p className="text-danger">{formik?.touched?.title}</p>
           </div>
-
           <div className="form">
             <label htmlFor="description">Description:</label>
             <br></br>
             <textarea
-              value={formik.values.description}
-              onChange={formik.handleChange("description")}
-              onBlur={formik.handleBlur("description")}
+              // value={formik.values.description}
+              // onChange={formik.handleChange("description")}
+              // onBlur={formik.handleBlur("description")}
               id="description"
               name="description"
               className="createReport"
@@ -82,7 +91,7 @@ export default function UpdateReport() {
           </div>
           <div>
             <Button variant="primary" type="submit">
-              Submit
+              Save
             </Button>
           </div>
         </form>

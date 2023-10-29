@@ -13,7 +13,7 @@ import { createPostAction } from "../../redux/slices/reports/postSlices";
 const formSchema = Yup.object().shape({
   title: Yup.string().required("title is required!"),
   description: Yup.string().required("Description is required!"),
-  user: Yup.string().required("User is required!"),
+  // user: Yup.string().required("User is required!"),
 });
 
 export default function CreateReport() {

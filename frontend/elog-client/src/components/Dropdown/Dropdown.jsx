@@ -1,16 +1,16 @@
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import React from "react";
+import { Form } from "react-bootstrap";
 
-function Selection() {
+export default function Dropdown() {
   return (
-    <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-      <Dropdown.Item href="#/action-1">Equipment</Dropdown.Item>
-      <Dropdown.Item href="#/action-2">FAT</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">QA Test</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">Common Engineering</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">Metrology</Dropdown.Item>
-    </DropdownButton>
+    <Form.Select aria-label="Default select example">
+      <option>Open this select menu</option>
+      <option value="1">Metrology</option>
+      <option value="2">QA Related</option>
+      <option value="3">Common Enginnering</option>
+      <option value="3">Production Enginnering</option>
+      <option value="3">Product Development</option>
+      <option value="3">Equipment</option>
+    </Form.Select>
   );
 }
-
-export default Selection;

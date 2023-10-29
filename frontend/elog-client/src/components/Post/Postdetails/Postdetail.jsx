@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./postdetail.css";
-import { Button } from "react-bootstrap";
-import { fetchPostDetailsAction } from "../../../redux/slices/reports/postSlices";
-import { useDispatch, useSelector } from "react-redux";
+import { Button, Nav } from "react-bootstrap";
+// import { fetchPostDetailsAction } from "../../../redux/slices/reports/postSlices";
+// import { useDispatch, useSelector } from "react-redux";
 import { baseURL } from "../../../utils/baseUrl";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+import UpdateReport from "../updateComp/UpdateReport";
+import Test from "../updateComp/Test";
+// import axios from "axios";
 
 export default function Postdetail() {
   // console.log(props);
@@ -142,14 +144,17 @@ export default function Postdetail() {
 
         <div id="button">
           <div>
-            <Button variant="primary" type="submit">
-              Update
-            </Button>
+            <Nav.Link
+              as={Link}
+              to={`/updatepost/${id}`}
+              element={<UpdateReport />}
+            >
+              {/* <Nav.Link href={`/updatepost/${id}`} element={<Test />}> */}
+              <Button>Update</Button>
+            </Nav.Link>
           </div>
           <div>
-            <Button variant="primary" type="submit">
-              Delete
-            </Button>
+            <Button variant="primary">Delete</Button>
           </div>
         </div>
       </div>
