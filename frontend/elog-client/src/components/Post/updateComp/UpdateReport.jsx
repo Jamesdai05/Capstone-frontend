@@ -18,6 +18,8 @@ export default function UpdateReport(props) {
       category: " ",
     },
 
+    validationSchema: formSchema,
+
     onSubmit: (values) => {
       // console.log(values)
     },
