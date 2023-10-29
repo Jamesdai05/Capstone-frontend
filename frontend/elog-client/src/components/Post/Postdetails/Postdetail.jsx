@@ -6,7 +6,7 @@ import { Button, Nav } from "react-bootstrap";
 import { baseURL } from "../../../utils/baseUrl";
 import { Link, useParams } from "react-router-dom";
 import UpdateReport from "../updateComp/UpdateReport";
-import Test from "../updateComp/Test";
+// import Test from "../updateComp/Test";
 // import axios from "axios";
 
 export default function Postdetail() {

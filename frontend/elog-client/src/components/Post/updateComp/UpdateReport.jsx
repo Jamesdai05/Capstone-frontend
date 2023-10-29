@@ -20,6 +20,7 @@ export default function UpdateReport() {
   const [report, setReport] = useState({});
 
   const formik = useFormik({
+    // enableReinitialize: true,
     initialValues: {
       title: report.title,
       description: report.description,
@@ -29,7 +30,18 @@ export default function UpdateReport() {
 
     onSubmit: (values) => {
       console.log(values);
-      // setReport(values);
+      // const handleSubmit = (values) => {
+      //   // Submit the form data to the server.
+      //   fetch(`${baseURL}/api/posts/${id}`, {
+      //     method: "PUT",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(values),
+      //   });
+      // };
+      setReport(values);
+      // console.log(report);
     },
   });
 
@@ -42,7 +54,6 @@ export default function UpdateReport() {
           formik.setFieldValue("title", data.title);
           formik.setFieldValue("description", data.description);
           setReport(data);
-          // console.log(report.title);
         });
     };
     makeApiCall();
@@ -100,7 +111,7 @@ export default function UpdateReport() {
               <br></br>
               {/* will be set to the selection bar later on */}
               <input
-                // value={formik.values.title}
+                value={formik.values.title}
                 onChange={formik.handleChange("title")}
                 onBlur={formik.handleBlur("title")}
                 className="createReport"
@@ -130,7 +141,7 @@ export default function UpdateReport() {
               <p className="text-danger">{formik?.touched?.description}</p>
             </div>
             <div>
-              <Button variant="primary" onSubmit={handleSubmit} type="submit">
+              <Button variant="primary" type="submit">
                 Save
               </Button>
             </div>
