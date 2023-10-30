@@ -25,15 +25,17 @@ export default function Home() {
   }, []);
 
   const posts = reports.map((element, index) => (
-    <Post
-      title={element.title}
-      key={index}
-      description={element.description}
-      // image={element.image}
-      cat={element.categories}
-      time={element.createAt}
-      id={element._id}
-    />
+    <div className="grid-card">
+      <Post
+        title={element.title}
+        key={index}
+        description={element.description}
+        // image={element.image}
+        cat={element.categories}
+        time={element.createAt}
+        id={element._id}
+      />
+    </div>
   ));
   // console.log(posts);
   // axios

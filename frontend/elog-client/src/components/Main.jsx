@@ -33,6 +33,7 @@ const Main = () => {
         <Route path="posts/:id" element={<Postdetail />} />
         {/* <Route path="updatepost/:id" element={<UpdateReport />} /> */}
         <Route path="updatepost/:id" element={<UpdateReport />} />
+        <Route path="deletepost/:id" element={<Postdetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

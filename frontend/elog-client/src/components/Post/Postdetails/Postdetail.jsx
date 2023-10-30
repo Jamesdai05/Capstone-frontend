@@ -4,41 +4,52 @@ import { Button, Nav } from "react-bootstrap";
 // import { fetchPostDetailsAction } from "../../../redux/slices/reports/postSlices";
 // import { useDispatch, useSelector } from "react-redux";
 import { baseURL } from "../../../utils/baseUrl";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import UpdateReport from "../updateComp/UpdateReport";
+import Home from "../../../Pages/Home/Homepage";
 // import   Test from "../updateComp/Test";
-import axios from "axios";
 
 export default function Postdetail() {
   const [report, setReport] = useState({});
+  const [deleted, setDeleted] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const deleteFormData = async (data) => {
-    const client = axios.create({
-      baseURL: `${baseURL}`,
-    });
+  //delete report
+  const deleteFormData = async (report) => {
+    try {
+      const response = await fetch(`${baseURL}/api/posts/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      // if(!response.ok){
+      //   throw new Error("Fail to delete form!")
+      // }
+      // console.log("Document is deleted!")
 
-    const response = await client.delete(`/api/posts/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify(data),
-    });
-
-    return response;
+      return response;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   };
 
-  const handleSubmit = async (Data) => {
+  const handleDelete = async (Data) => {
     const response = await deleteFormData(Data);
 
-    if (response.status === 200) {
+    if (response?.status === 200) {
       // The API call was successful.
       console.log("Report has been deleted..");
+      navigate("/");
     } else {
       // Handle the error.
       console.log("Report deleted unsuccessful!");
     }
   };
+
+  //show page
 
   useEffect(() => {
     const makeApiCall = () => {
@@ -158,7 +169,7 @@ export default function Postdetail() {
             </Nav.Link>
           </div>
           <div>
-            <Button onclick={handleSubmit} variant="primary">
+            <Button onClick={handleDelete} variant="primary" type="submit">
               Delete
             </Button>
           </div>

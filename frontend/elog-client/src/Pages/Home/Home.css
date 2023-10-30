@@ -1,8 +1,17 @@
 .main {
-  display: flex;
-  margin: 1em auto;
-  justify-content: space-around;
+  display: grid;
+  /* grid-template-columns: auto auto auto auto auto; */
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  /* gap: 0.8rem; */
+  margin: 1em;
+  /* justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  flex-wrap: wrap; */
+  /* grid-template-columns: repeat(5, 1fr); */
+  gap: 1rem;
+  /* justify-content: space-around; */
 }
+
+/* .grid-card {
+  border: 2px solid rgb(48, 46, 48);
+} */
