@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 // import { useDispatch, useSelector } from "react-redux";
 import "./api.js";
 import * as Yup from "yup";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { baseURL } from "../../../utils/baseUrl.js";
 
 const formSchema = Yup.object().shape({
@@ -16,7 +16,8 @@ const formSchema = Yup.object().shape({
 export default function UpdateReport() {
   // console.log(props);
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
+  const navigate = useNavigate();
 
   const [report, setReport] = useState({});
 
@@ -50,11 +51,7 @@ export default function UpdateReport() {
       } catch (error) {
         console.log("Error submitting form:", error);
       }
-      // console.log(values);
-      //     setReport(values);
-      //     // console.log(report);
-      //   },
-      // });
+      navigate("/");
     },
   });
 

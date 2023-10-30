@@ -95,13 +95,10 @@ export default function Postdetail() {
         </div>
       </div>
       <div>
-        <p className="show-Main">
+        <div className="show-Main">
           <p>{report.description}</p>
           {/* this the report paragraph. */}
-        </p>
-
-        <p className="show-Main">{/* This is another report paragraph */}</p>
-
+        </div>
         <div id="button">
           <div>
             <Nav.Link
