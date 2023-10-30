@@ -1,28 +1,41 @@
-.show-sub {
+.showContainer {
   display: flex;
-  justify-content: space-around;
-}
-
-.postContainer {
-  display: flex;
+  flex-wrap: wrap;
   max-width: 60vw;
   margin: 0.5em auto;
-  padding: 0.2em;
+  padding: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid grey;
+}
+
+.show-main {
+  max-width: 60vw;
+  margin: 0.5em 20%;
+}
+
+.show-sub {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.3em 1em;
 }
 
 #button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-right: 0.8em;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   div {
     width: max-content;
   }
+} */
+
+.post-at,
+.postby {
+  margin: 2em;
 }
 
 /* Button {
