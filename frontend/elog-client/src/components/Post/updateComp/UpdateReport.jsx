@@ -72,7 +72,7 @@ export default function UpdateReport() {
     };
     makeApiCall();
     // report?.title ? console.log(report.title) : console.log("null");
-  }, [id,formik]);
+  }, [id]);
 
   return (
     <>
