@@ -2,10 +2,13 @@ import { useFormik, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 // import { useDispatch, useSelector } from "react-redux";
+import "./updateReport.css";
 import "./api.js";
 import * as Yup from "yup";
 import { useParams } from "react-router-dom";
 import { baseURL } from "../../../utils/baseUrl.js";
+import Dropdown from "../../Dropdown/Dropdown.jsx";
+
 
 const formSchema = Yup.object().shape({
   title: Yup.string().required("title is required!"),
@@ -92,18 +95,11 @@ export default function UpdateReport() {
         <Formik initialValues={report}>
           <form id="createReport" onSubmit={formik.handleSubmit}>
             <div className="cat">
-              <label htmlFor="Category">Category:</label>
-              <br></br>
-              {/* <Form.Select>
-              <option>Default select</option>
-              <option>Common Engineering</option>
-              <option>Metrology & Measurement</option>
-              <option>Equipment</option>
-              <option>FA</option>
-              <option>Product Development</option>
-              <option>Process Related</option>
-            </Form.Select> */}
-              <input
+              <div className="dropdown">
+                <Dropdown />
+              </div>
+
+              {/* <input
                 value={formik.values.category}
                 onChange={formik.handleChange("category")}
                 onBlur={formik.handleBlur("category")}
@@ -113,7 +109,7 @@ export default function UpdateReport() {
                 id="category"
                 name="category"
                 autoComplete="category"
-              />
+              /> */}
               {/* <Selection /> */}
             </div>
             <div className="create-title">

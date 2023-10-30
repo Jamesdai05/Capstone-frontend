@@ -60,6 +60,9 @@ export default function Postdetail() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          console.log(report.createdAt);
+          // let date=report.createAt;
+          // console.log(date)
           setReport(data);
         });
     };
@@ -91,7 +94,10 @@ export default function Postdetail() {
           </p>
         </div>
         <div>
-          <p className="post-at">{report.createdAt}</p>
+          {/* <p className="post-at">{report.createdAt}</p> */}
+          <p className="post-at">
+            {report.createdAt}
+          </p>
         </div>
       </div>
       <div>
@@ -124,10 +130,12 @@ export default function Postdetail() {
               backdrop="static"
               keyboard={false}
             >
-              {/* <Modal.Header closeButton>
-                <Modal.Title>Modal title</Modal.Title>
-              </Modal.Header> */}
-              <Modal.Body>Are you sure want to delete the report?</Modal.Body>
+              <Modal.Header closeButton>
+                <Modal.Title>Report Deleting</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Are you sure you want to delete the report?
+              </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   No
