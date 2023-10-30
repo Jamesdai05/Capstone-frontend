@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseURL } from "../../../utils/baseUrl";
 
-export const createPostAction = createAsyncThunk(
+export const updatePostAction = createAsyncThunk(
   "api/posts",
   async (post, { rejectWithValue, getState, dispatch }) => {
     const user = getState()?.users;
@@ -29,12 +29,12 @@ export const createPostAction = createAsyncThunk(
   }
 );
 
-export const updatePostAction = createAsyncThunk(
-  "post/update",
+
+export const createPostAction = createAsyncThunk(
+  "api/posts",
   async (post, { rejectWithValue, getState, dispatch }) => {
     const user = getState()?.users;
     const { usersAuth } = user;
-    //authentication
     const config = {
       headers: {
         Authorization: `Bearer ${usersAuth?.token}`,
@@ -42,7 +42,11 @@ export const updatePostAction = createAsyncThunk(
     };
     try {
       // console.log("abc");
-      const data = await axios.post(`${baseURL}/api/posts`, post, config);
+      const data = await axios.put(
+        `${baseURL}/api/posts/`,
+        post,
+        config
+      );
       // console.log("2");
       // console.log(data);
       return data;
@@ -52,6 +56,30 @@ export const updatePostAction = createAsyncThunk(
     }
   }
 );
+
+// export const updatePostAction = createAsyncThunk(
+//   "post/update",
+//   async (post, { rejectWithValue, getState, dispatch }) => {
+//     const user = getState()?.users;
+//     const { usersAuth } = user;
+//     //authentication
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${usersAuth?.token}`,
+//       },
+//     };
+//     try {
+//       // console.log("abc");
+//       const data = await axios.post(`${baseURL}/api/posts`, post, config);
+//       // console.log("2");
+//       // console.log(data);
+//       return data;
+//     } catch (error) {
+//       if (!error?.response) throw error;
+//       return rejectWithValue(error?.response?.data);
+//     }
+//   }
+// );
 
 //for post details
 export const fetchPostDetailsAction = createAsyncThunk(
