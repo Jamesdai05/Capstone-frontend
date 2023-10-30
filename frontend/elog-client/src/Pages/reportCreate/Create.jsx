@@ -8,6 +8,7 @@ import * as Yup from "yup";
 // import Selection from "../../components/Dropdown/Dropdown";
 
 import { createPostAction } from "../../redux/slices/reports/postSlices";
+import { useNavigate } from "react-router-dom";
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -28,7 +29,7 @@ export default function CreateReport() {
   //   console.log(temp.user);
   // }, []);
   // const userId = userInfo.user
-
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -42,6 +43,11 @@ export default function CreateReport() {
     },
     validationSchema: formSchema,
   });
+
+  const handleClick=()=>{
+    return navigate("/");
+  }
+
   return (
     <>
       <div>
@@ -116,7 +122,7 @@ export default function CreateReport() {
             <p className="text-danger">{formik?.touched?.description}</p>
           </div>
           <div>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" onClick={handleClick} type="submit">
               Submit
             </Button>
           </div>
