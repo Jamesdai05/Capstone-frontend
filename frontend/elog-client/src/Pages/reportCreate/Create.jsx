@@ -44,9 +44,9 @@ export default function CreateReport() {
     validationSchema: formSchema,
   });
 
-  const handleClick=()=>{
-    return navigate("/");
-  }
+  // const handleClick=()=>{
+  //   return navigate("/");
+  // }
 
   return (
     <>
@@ -122,7 +122,7 @@ export default function CreateReport() {
             <p className="text-danger">{formik?.touched?.description}</p>
           </div>
           <div>
-            <Button variant="primary" onClick={handleClick} type="submit">
+            <Button variant="primary" type="submit">
               Submit
             </Button>
           </div>
