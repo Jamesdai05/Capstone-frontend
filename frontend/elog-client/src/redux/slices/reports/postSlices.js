@@ -102,20 +102,20 @@ const postSlice = createSlice({
       state.serverErr = action?.error?.message;
     });
     //update Report
-    // builder.addCase(updatePostAction.pending, (state, action) => {
-    //   state.loading = true;
-    // });
-    // builder.addCase(updatePostAction.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.postUpdated = action?.payload;
-    //   state.appErr = undefined;
-    //   state.serverErr = undefined;
-    // });
-    // builder.addCase(updatePostAction.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.appErr = action?.payload?.message;
-    //   state.serverErr = action?.error?.message;
-    // });
+    builder.addCase(updatePostAction.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(updatePostAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.postUpdated = action?.payload;
+      state.appErr = undefined;
+      state.serverErr = undefined;
+    });
+    builder.addCase(updatePostAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appErr = action?.payload?.message;
+      state.serverErr = action?.error?.message;
+    });
   },
 });
 
