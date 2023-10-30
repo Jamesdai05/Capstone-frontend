@@ -14,6 +14,7 @@ const formSchema = Yup.object().shape({
 });
 
 export default function UpdateReport() {
+  // console.log(props);
   const { id } = useParams();
   // console.log(id);
 
@@ -63,25 +64,13 @@ export default function UpdateReport() {
           formik.setFieldValue("title", data.title);
           formik.setFieldValue("description", data.description);
           formik.setFieldValue("category", data.category);
-          setReport(data);
+          // setReport(data);
         });
     };
     makeApiCall();
     // report?.title ? console.log(report.title) : console.log("null");
   }, []);
 
-  // const handleSubmit = (values) => {
-  //   // Submit the form data to the server.
-  //   fetch(`${baseURL}/api/posts/${id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-  // };
-
-  // console.log(id);
 
   return (
     <>

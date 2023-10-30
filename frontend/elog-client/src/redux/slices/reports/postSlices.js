@@ -14,11 +14,7 @@ export const createPostAction = createAsyncThunk(
     };
     try {
       console.log("abc");
-      const data = await axios.post(
-        `${baseURL}/api/posts`,
-        post,
-        config
-      );
+      const data = await axios.post(`${baseURL}/api/posts`, post, config);
       console.log("2");
       // console.log(data);
       return data;
@@ -42,7 +38,11 @@ export const updatePostAction = createAsyncThunk(
     };
     try {
       // console.log("abc");
-      const data = await axios.put(`${baseURL}/api/posts/{id}`, post, config);
+      const data = await axios.put(
+        `${baseURL}/api/posts/${post.id}`,
+        post,
+        config
+      );
       // console.log("2");
       // console.log(data);
       return data;
@@ -101,6 +101,7 @@ const postSlice = createSlice({
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;
     });
+
     //update Report
     builder.addCase(updatePostAction.pending, (state, action) => {
       state.loading = true;
