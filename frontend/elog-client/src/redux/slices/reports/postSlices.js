@@ -3,7 +3,7 @@ import axios from "axios";
 import { baseURL } from "../../../utils/baseUrl";
 
 export const updatePostAction = createAsyncThunk(
-  "api/posts",
+  "posts/update",
   async (post, { rejectWithValue, getState, dispatch }) => {
     const user = getState()?.users;
     const { usersAuth } = user;
