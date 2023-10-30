@@ -29,7 +29,6 @@ export const updatePostAction = createAsyncThunk(
   }
 );
 
-
 export const createPostAction = createAsyncThunk(
   "api/posts",
   async (post, { rejectWithValue, getState, dispatch }) => {
@@ -42,11 +41,7 @@ export const createPostAction = createAsyncThunk(
     };
     try {
       // console.log("abc");
-      const data = await axios.put(
-        `${baseURL}/api/posts/`,
-        post,
-        config
-      );
+      const data = await axios.post(`${baseURL}/api/posts/`, post, config);
       // console.log("2");
       // console.log(data);
       return data;
@@ -130,20 +125,20 @@ const postSlice = createSlice({
       state.serverErr = action?.error?.message;
     });
     //update Report
-    builder.addCase(updatePostAction.pending, (state, action) => {
-      state.loading = true;
-    });
-    builder.addCase(updatePostAction.fulfilled, (state, action) => {
-      state.loading = false;
-      state.postUpdated = action?.payload;
-      state.appErr = undefined;
-      state.serverErr = undefined;
-    });
-    builder.addCase(updatePostAction.rejected, (state, action) => {
-      state.loading = false;
-      state.appErr = action?.payload?.message;
-      state.serverErr = action?.error?.message;
-    });
+    // builder.addCase(updatePostAction.pending, (state, action) => {
+    //   state.loading = true;
+    // });
+    // builder.addCase(updatePostAction.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.postUpdated = action?.payload;
+    //   state.appErr = undefined;
+    //   state.serverErr = undefined;
+    // });
+    // builder.addCase(updatePostAction.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.appErr = action?.payload?.message;
+    //   state.serverErr = action?.error?.message;
+    // });
   },
 });
 
