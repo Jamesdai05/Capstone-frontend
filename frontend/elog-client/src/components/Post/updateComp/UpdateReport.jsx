@@ -16,7 +16,7 @@ const formSchema = Yup.object().shape({
 export default function UpdateReport() {
   // console.log(props);
   const { id } = useParams();
-  // console.log(id);
+  console.log(id);
 
   const [report, setReport] = useState({});
 
@@ -33,6 +33,7 @@ export default function UpdateReport() {
     onSubmit: async (values) => {
       try {
         // Submit the form data to the server.
+        console.log("1");
         const response = await fetch(`${baseURL}/api/posts/${id}`, {
           method: "PUT",
           headers: {
@@ -40,6 +41,8 @@ export default function UpdateReport() {
           },
           body: JSON.stringify(values),
         });
+        console.log("2");
+        console.log(values);
         if (!response.ok) {
           throw new Error("Failed to submit form");
         }
@@ -70,7 +73,6 @@ export default function UpdateReport() {
     makeApiCall();
     // report?.title ? console.log(report.title) : console.log("null");
   }, []);
-
 
   return (
     <>

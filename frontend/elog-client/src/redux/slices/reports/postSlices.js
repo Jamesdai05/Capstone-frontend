@@ -25,33 +25,33 @@ export const createPostAction = createAsyncThunk(
   }
 );
 
-export const updatePostAction = createAsyncThunk(
-  "post/update",
-  async (post, { rejectWithValue, getState, dispatch }) => {
-    const user = getState()?.users;
-    const { usersAuth } = user;
-    //authentication
-    const config = {
-      headers: {
-        Authorization: `Bearer ${usersAuth?.token}`,
-      },
-    };
-    try {
-      // console.log("abc");
-      const data = await axios.put(
-        `${baseURL}/api/posts/${post.id}`,
-        post,
-        config
-      );
-      // console.log("2");
-      // console.log(data);
-      return data;
-    } catch (error) {
-      if (!error?.response) throw error;
-      return rejectWithValue(error?.response?.data);
-    }
-  }
-);
+// export const updatePostAction = createAsyncThunk(
+//   "post/update",
+//   async (post, { rejectWithValue, getState, dispatch }) => {
+//     const user = getState()?.users;
+//     const { usersAuth } = user;
+//     //authentication
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${usersAuth?.token}`,
+//       },
+//     };
+//     try {
+//       // console.log("abc");
+//       const data = await axios.put(
+//         `${baseURL}/api/posts/${post.id}`,
+//         post,
+//         config
+//       );
+//       // console.log("2");
+//       // console.log(data);
+//       return data;
+//     } catch (error) {
+//       if (!error?.response) throw error;
+//       return rejectWithValue(error?.response?.data);
+//     }
+//   }
+// );
 
 //for post details
 export const fetchPostDetailsAction = createAsyncThunk(
@@ -103,20 +103,20 @@ const postSlice = createSlice({
     });
 
     //update Report
-    builder.addCase(updatePostAction.pending, (state, action) => {
-      state.loading = true;
-    });
-    builder.addCase(updatePostAction.fulfilled, (state, action) => {
-      state.loading = false;
-      state.postUpdated = action?.payload;
-      state.appErr = undefined;
-      state.serverErr = undefined;
-    });
-    builder.addCase(updatePostAction.rejected, (state, action) => {
-      state.loading = false;
-      state.appErr = action?.payload?.message;
-      state.serverErr = action?.error?.message;
-    });
+    // builder.addCase(updatePostAction.pending, (state, action) => {
+    //   state.loading = true;
+    // });
+    // builder.addCase(updatePostAction.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.postUpdated = action?.payload;
+    //   state.appErr = undefined;
+    //   state.serverErr = undefined;
+    // });
+    // builder.addCase(updatePostAction.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.appErr = action?.payload?.message;
+    //   state.serverErr = action?.error?.message;
+    // });
   },
 });
 
