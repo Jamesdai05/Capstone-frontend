@@ -13,13 +13,13 @@ export const createPostAction = createAsyncThunk(
       },
     };
     try {
-      // console.log("abc");
+      console.log("abc");
       const data = await axios.post(
         `${baseURL}/api/posts`,
         post,
         config
       );
-      // console.log("2");
+      console.log("2");
       // console.log(data);
       return data;
     } catch (error) {
@@ -42,7 +42,7 @@ export const updatePostAction = createAsyncThunk(
     };
     try {
       // console.log("abc");
-      const data = await axios.post(`${baseURL}/api/posts/{id}`, post, config);
+      const data = await axios.put(`${baseURL}/api/posts/{id}`, post, config);
       // console.log("2");
       // console.log(data);
       return data;
