@@ -1,8 +1,8 @@
 .showContainer {
   display: flex;
   flex-wrap: wrap;
-  max-width: 60vw;
-  margin: 0.5em auto;
+  /* max-width: 60vw; */
+  margin: 0.5em 5vw;
   padding: 1em;
   flex-direction: column;
   justify-content: center;

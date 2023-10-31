@@ -119,14 +119,14 @@ export default function Admin() {
         </select>
       </form>
       <ul>
-        {page.list.map((report) => {
+        {/* {page.list.map((report) => {
           return (
             <div key={report.title}>
               <h2>{report.title}</h2>
               <p>{report.description}</p>
             </div>
           );
-        })}
+        })} */}
         {page.list.length === 0 && <h2>Empty list!!!</h2>}
       </ul>
     </div>

@@ -25,7 +25,7 @@ export default function Home() {
   // const navigate = useNavigate();
 
   const makeApiCall = async () => {
-    let response = fetch(`${baseURL}/api/posts`);
+    let response = await fetch(`${baseURL}/api/posts`);
     let data = await response.json();
     console.log(data);
     setReports(data);
@@ -37,7 +37,6 @@ export default function Home() {
 
   const handleChange = (e) => {
     e.preventDefault();
-    if (e.target.value === "") return reports;
     const results = reports.filter((report) => {
       if (e.target.value === "") return reports;
       //set the sortByField for the non-null
@@ -82,9 +81,10 @@ export default function Home() {
     });
   }
 
-  const posts = reports.map((element, index) => (
-    <div className="grid-card">
+  const posts = display.list.map((element, index) => (
+    <div className="grid-item cards-content">
       <Post
+        className="card-indivisual"
         title={element.title}
         key={index}
         description={element.description}
@@ -99,53 +99,59 @@ export default function Home() {
   return (
     <div>
       <Header />
-      {/* {!usersAuth ? (
+      {!usersAuth ? (
         <div className="empty">
           <h1>Please sign up an account...</h1>
         </div>
       ) :
-      ( */}
+      (
       <div className="main">
-        <div>
-          <form action="" className="sortFunction">
-            <span>Search</span>
-            <input
-              className="admininput"
-              type="search"
-              onChange={handleChange}
-              value={display.query}
-              placeholder="enter the text here"
-            />
-
-            <span>SortBy:</span>
-            <select
-              defaultValue={"title"}
-              onChange={(e) => sortBy(e.target.value)}
-            >
-              <option value="DEFAULT" disabled>
-                None
-              </option>
-              <option value="title">Title</option>
-              <option value="description">Description</option>
-            </select>
-
-            <span>Sort By</span>
-            <select
-              defaultValue={"DEFAULT"}
-              onChange={(e) => updateReports(e.target.value)}
-            >
-              <option value="DEFAULT" disabled>
-                None
-              </option>
-              <option value="ascending">Ascending</option>
-              <option value="descending">Descending</option>
-            </select>
+        <div className="search">
+          <form className="sortFunction">
+            <div className="form-container">
+              <div className="form-1">
+                <span>Search</span>
+                <input
+                  className="admininput"
+                  type="search"
+                  onChange={handleChange}
+                  value={display.query}
+                  placeholder="enter the text here"
+                />
+              </div>
+              <div className="form-2">
+                <span>Category:</span>
+                <select
+                  defaultValue={"title"}
+                  onChange={(e) => sortBy(e.target.value)}
+                >
+                  <option value="DEFAULT" disabled>
+                    None
+                  </option>
+                  <option value="title">Title</option>
+                  <option value="description">Description</option>
+                </select>
+              </div>
+              <div className="form-3">
+                <span>Sort By:</span>
+                <select
+                  defaultValue={"DEFAULT"}
+                  onChange={(e) => updateReports(e.target.value)}
+                >
+                  <option value="DEFAULT" disabled>
+                    None
+                  </option>
+                  <option value="ascending">Ascending</option>
+                  <option value="descending">Descending</option>
+                </select>
+              </div>
+            </div>
           </form>
         </div>
-        {posts}
-      </div>
+        <div className="individual">{posts}</div>
+      </div>)}
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
