@@ -15,3 +15,11 @@
 /* .grid-card {
   border: 2px solid rgb(48, 46, 48);
 } */
+
+.empty {
+  width: 600px;
+  height: 600px;
+  /* border: 2px solid black; */
+  margin: 0 auto;
+  padding: 20% 0;
+}

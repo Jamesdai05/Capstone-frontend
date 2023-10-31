@@ -40,15 +40,15 @@ const Navigation = () => {
               <Nav.Link as={Link} to={"/"} element={<Home />}>
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to={"/create"} element={<CreateReport />}>
+              {usersAuth ? <Nav.Link as={Link} to={"/create"} element={<CreateReport />}>
                 Create
-              </Nav.Link>
+              </Nav.Link> : null}
               {/* <Nav.Link as={Link} to={"/show"} element={<Postdetail />}>
                 Show
               </Nav.Link> */}
-              <Nav.Link as={Link} to={"/profile"} element={<Profile />}>
+              {usersAuth ? <Nav.Link as={Link} to={"/profile"} element={<Profile />}>
                 Profile
-              </Nav.Link>
+              </Nav.Link> : null }
               {JSON.parse(localStorage.getItem("userInfo"))?.user ===
               "6540665fd397936ded19a193" ? (
                 <Nav.Link as={Link} to={"/admin"} element={<Admin />}>
