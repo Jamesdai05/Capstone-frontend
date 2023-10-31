@@ -15,6 +15,7 @@ const formSchema = Yup.object().shape({
   title: Yup.string().required("title is required!"),
   description: Yup.string().required("Description is required!"),
   user: Yup.string().required("User is required!"),
+  category:Yup.string().required("Cateogry is required!")
 });
 
 export default function CreateReport() {
@@ -33,14 +34,14 @@ export default function CreateReport() {
   const formik = useFormik({
     initialValues: {
       title: "",
-      // category: "",
+      category: "",
       description: "",
       user: JSON.parse(localStorage.getItem("userInfo")).user,
     },
     onSubmit: (values) => {
-      // console.log(values);
+      console.log(values);
       dispatch(createPostAction(values));
-
+      // console.log(values)
       navigate("/");
     },
     validationSchema: formSchema,
@@ -76,9 +77,9 @@ export default function CreateReport() {
             <label htmlFor="Category">Category:</label>
             <br></br>
             <input
-              // value={formik.values.category}
-              // onChange={formik.handleChange("category")}
-              // onBlur={formik.handleBlur("category")}
+              value={formik.values.category}
+              onChange={formik.handleChange("category")}
+              onBlur={formik.handleBlur("category")}
               className="createReport"
               type="text"
               placeholder="Enter the category here"

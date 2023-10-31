@@ -34,8 +34,9 @@
 } */
 
 .post-at,
-.postby {
-  margin: 2em;
+.postBy {
+  margin: 0.5em 0.5em;
+  padding: 0.2em;
 }
 
 /* Button {

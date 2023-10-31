@@ -63,6 +63,7 @@ export default function UpdateReport() {
           console.log(data);
           formik.setFieldValue("title", data.title);
           formik.setFieldValue("description", data.description);
+          console.log(data.category)
           formik.setFieldValue("category", data.category);
           // setReport(data);
         });
@@ -82,15 +83,6 @@ export default function UpdateReport() {
             <div className="cat">
               <label htmlFor="Category">Category:</label>
               <br></br>
-              {/* <Form.Select>
-              <option>Default select</option>
-              <option>Common Engineering</option>
-              <option>Metrology & Measurement</option>
-              <option>Equipment</option>
-              <option>FA</option>
-              <option>Product Development</option>
-              <option>Process Related</option>
-            </Form.Select> */}
               <input
                 value={formik.values.category}
                 onChange={formik.handleChange("category")}

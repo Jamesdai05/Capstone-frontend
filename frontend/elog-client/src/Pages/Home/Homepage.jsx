@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      { !usersAuth ? <div className="empty"><h1>Please sign up an account!</h1></div> :
+      { !usersAuth ? <div className="empty"><h1>Please sign up an account...</h1></div> :
       <div className="main">
         {posts}
         {/* <Posts /> */}
