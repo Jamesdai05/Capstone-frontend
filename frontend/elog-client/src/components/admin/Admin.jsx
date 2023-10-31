@@ -45,7 +45,7 @@ export default function Admin() {
         .toLowerCase()
         .includes(e.target.value.toLowerCase());
     });
-    setResult(results);
+    setResult(results); //this is to save the data to the results
 
     setPage({
       query: e.target.value,
