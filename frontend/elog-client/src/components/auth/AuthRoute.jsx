@@ -3,7 +3,10 @@ import NotAuthenticated from "../../Pages/NotAuthenticated/NotAuthenticated";
 import Admin from "../admin/Admin";
 
 export default function AuthRoute() {
-  let isLogin = false ;
-  if (!isLogin) return <NotAuthenticated />;
-  return <Admin />;
+  const usersAuth = localStorage.getItem("userInfo");
+
+
+  let isLogin = usersAuth.user ;
+  if (isLogin) return <Admin />;
+  return <NotAuthenticated />;
 }
