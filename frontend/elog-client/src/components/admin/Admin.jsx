@@ -7,34 +7,24 @@ import { baseURL } from "../../utils/baseUrl";
 export default function Admin() {
   const [sortType, setSortType]=useState("ascending");
   const [result, setResult] = useState();
-  const [data, setData] = useState({
-    query:"",
-    list: " "
-  });
+  const [report, setReport] = useState([])
 
-  console.log("test")
+  // console.log("test")
 
   const makeApiCall=()=>{
+    fetch(`${baseURL}/api/posts`)
+     .then((res)=>res.json())
+     .then((data) => {
+          console.log(data);
+          setReport(data);
+        });
+    }
+  // // make an api call to query the data.
+  // useEffect(
+  //   ()=>{
+  //     makeApiCall();
+  // },[])
 
-  fetch(`${baseURL}/api/posts`)
-  .then((res)=>res.json())
-  .then(data=>console.log(data))
-    return data;
-  }
-  const posts = makeApiCall
-  // make an api call to query the data.
-  useEffect(
-    ()=>{
-      makeApiCall();
-  },[])
-
-
-  const handleChange =(e)=>{
-    const results =posts.filter(post=>{
-      if(e.target.value ==="")return posts;
-
-    })
-  }
 
 
 

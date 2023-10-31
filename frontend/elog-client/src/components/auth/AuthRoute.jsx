@@ -7,6 +7,6 @@ export default function AuthRoute() {
 
 
   let isLogin = usersAuth.user ;
-  if (isLogin) return <Admin />;
+  if (!isLogin) return <Admin />;
   return <NotAuthenticated />;
 }
