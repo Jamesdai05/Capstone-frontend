@@ -11,7 +11,7 @@ export default function Admin() {
   //store field title or description
   const [sortByField, setSortByField] = useState("title");
 
-  const [results, setResults] = useState();
+  const [result, setResult] = useState();
 
   //get the data and store to reports.
   const [reports, setReports] = useState({});
@@ -22,6 +22,7 @@ export default function Admin() {
   });
 
   // console.log("test")
+  console.log(reports);
 
   const makeApiCall = async () => {
     let response = await fetch(`${baseURL}/api/posts`);
@@ -36,22 +37,29 @@ export default function Admin() {
   }, []);
 
   const handleChange = (e) => {
-    const results = reports.filter((element) => {
+    e.preventDefault();
+    const results = reports.filter((report) => {
       if (e.target.value === "") return reports;
-      return reports[sortByField].includes(e.target.value.toLowerCas());
+      // console.log(reports);
+      return report[sortByField]
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase());
     });
-    setResults(results);
-    setNestedObjectValues({
+    setResult(results);
+
+    setPage({
       query: e.target.value,
       list: sortFunction(results, sortType, sortByField),
     });
   };
 
+  // console.log(page.list);
+
   const sortFunction = (results, sortType, sortByField) => {
-    if (sortType === "asending") {
+    if (sortType === "ascending") {
       results.sort((a, b) => (a[sortByField] < b[sortByField] ? -1 : 1));
-    } else if (sortType === "desending") {
-      results.sort((a, b) => (a[sortByField] > b[sortByField] ? 1 : -1));
+    } else if (sortType === "descending") {
+      results.sort((a, b) => (b[sortByField] > a[sortByField] ? 1 : -1));
     }
     return results;
   };
@@ -60,8 +68,8 @@ export default function Admin() {
   const updateReports = (e) => {
     setSortType(e);
     setPage({
-      query: page.query,
-      list: !results
+      query: e.target.value, //page.query
+      list: !result
         ? sortFunction(reports, e, sortByField)
         : sortFunction(reports, e, sortByField),
     });
@@ -70,24 +78,39 @@ export default function Admin() {
   const sortBy = (e) => {
     setSortByField(e);
     setPage({
-      query: page.query,
-      list: !results
-        ? sortFunction(reports, e, sortType)
-        : sortFunction(results, e, sortType),
+      query: e.target.value,
+      list: !result
+        ? sortFunction(reports, sortType, e)
+        : sortFunction(result, sortType, e),
     });
   };
 
   return (
     <div>
       <h1>Admin Page</h1>
-      <form action="">
+      <form action="" className="sortFunction">
         <span>Search</span>
-        <input className="admininput" type="search" value={page.query} />
+        <input
+          className="admininput"
+          type="search"
+          onChange={handleChange}
+          value={page.query}
+          placeholder="enter the text here"
+        />
+
         <span>SortBy:</span>
+        <select defaultValue={"title"} onChange={(e) => sortBy(e.target.value)}>
+          <option value="DEFAULT" disabled>
+            None
+          </option>
+          <option value="title">Title</option>
+          <option value="description">Description</option>
+        </select>
+
+        <span>Sort By</span>
         <select
-          defaultValue={"title"}
-          onChange={(e) => sortBy(e.target.value)}
-          id=""
+          defaultValue={"DEFAULT"}
+          onChange={(e) => updateReports(e.target.value)}
         >
           <option value="DEFAULT" disabled>
             None
@@ -96,6 +119,17 @@ export default function Admin() {
           <option value="descending">Descending</option>
         </select>
       </form>
+      <ul>
+        {page.list.map((report) => {
+          return (
+            <div key={report.title}>
+              <h2>{report.title}</h2>
+              <p>{report.description}</p>
+            </div>
+          );
+        })}
+        {page.list.length === 0 && <h2>Empty list!!!</h2>}
+      </ul>
     </div>
   );
 }
