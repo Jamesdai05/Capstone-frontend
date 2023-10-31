@@ -19,14 +19,7 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateReport />} />
         <Route path="/profile" element={<Profile />} />
-        <Route
-          path="/admin"
-          element={
-            <AuthRoute>
-              <Admin />
-            </AuthRoute>
-          }
-        />
+        <Route path="/admin" element={<AuthRoute/>}/>
         <Route path="auth/login" element={<Login />} />
         <Route path="auth/register" element={<Registration />} />
         <Route path="posts/:id" element={<Postdetail />} />

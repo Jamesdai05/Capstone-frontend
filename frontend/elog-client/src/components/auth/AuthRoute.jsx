@@ -1,7 +1,9 @@
 import React from "react";
+import NotAuthenticated from "../../Pages/NotAuthenticated/NotAuthenticated";
+import Admin from "../admin/Admin";
 
-export default function AuthRoute({ children }) {
-  let isLogin = false;
-  if (!isLogin) return <h1>Access Denied</h1>;
-  return <div>{children}</div>;
+export default function AuthRoute() {
+  let isLogin = false ;
+  if (!isLogin) return <NotAuthenticated />;
+  return <Admin />;
 }
