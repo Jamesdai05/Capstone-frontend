@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Home from "../../Pages/Home/Homepage";
 import Profile from "../../Pages/profile/Profile";
 import Admin from "../admin/Admin";
@@ -13,9 +13,11 @@ const Navigation = () => {
   // JSON.parse(localStorage.getItem("userInfo")).user === "6540665fd397936ded19a193" ? ;
   const store = useSelector((state) => state?.users);
   const { usersAuth } = store;
+  const navigate = useNavigate();
 
   const handleLogOut = ()=>{
     localStorage.removeItem("userInfo");
+    navigate("/auth/login")
   }
 
   return (
