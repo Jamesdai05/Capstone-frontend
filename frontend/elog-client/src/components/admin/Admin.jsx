@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import postSlices from "../../redux/slices/reports/postSlices";
+import axios from "axios";
+import { baseURL } from "../../utils/baseUrl";
+
 
 export default function Admin() {
+  const [sortType, setSortType]=useState("ascending");
+  const [result, setResult] = useState();
+  const [state, setState] = useState({
+    query:"",
+    list: " "
+  });
+
+  const makeApiCall=()=>{
+
+  fetch(`${baseURL}/api/posts`)
+  .then((res)=>res.json())
+  .then(data=>console.log(data))
+
+  }
+  // make an api call to query the data.
+  useEffect(
+    ()=>{
+      makeApiCall();
+  },[])
+
+
+  // const handleChange =(e)=>{
+  //   const results =
+  // }
+
+
+
+
   return (
     <div>
       <h1>Admin Page</h1>
