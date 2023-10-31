@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useAsyncError } from "react-router-dom";
+import { Navigate, useAsyncError, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { useFormik } from "formik";
@@ -36,13 +36,24 @@ export default function Login() {
   //redirct the user after login
   const store = useSelector((state) => state?.users);
   const { usersAuth, loading, serverErr, appErr } = store;
-  if (usersAuth) return <Navigate to="/" />;
+  // if (usersAuth) return <Navigate to="/" />;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (usersAuth) {
+      refreshPage();
+      navigate("/");
+    }
+  }, [usersAuth]);
   // useEffect(() => {
   //   if (usersAuth) {
   //     refreshPage();
   //     return <Navigate to="/" />;
   //   }
   // }, []);
+  // const handleLogOut = ()=>{
+  //   localStorage.removeItem("userInfo");
+  // }
 
   return (
     <div className="auth">
@@ -113,9 +124,28 @@ export default function Login() {
             ></Form.Check>
           </div>
           <div className="d-grid">
-            <Button className="login" variant="primary" size="lg" type="submit">
-              Log In
-            </Button>
+            {/* usersAuth ?
+            {
+              <Button
+                onClick={handleLogOut}
+                className="login"
+                variant="primary"
+                size="lg"
+                type="submit"
+              >
+                Log Out
+              </Button>
+            }: */}
+            {
+              <Button
+                className="login"
+                variant="primary"
+                size="lg"
+                type="submit"
+              >
+                Log In
+              </Button>
+            }
           </div>
           <p className="forgot-password text-left">
             Forgot <a href="abc">password?</a>
