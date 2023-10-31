@@ -99,16 +99,52 @@ export default function Home() {
   return (
     <div>
       <Header />
-      {!usersAuth ? (
+      {/* {!usersAuth ? (
         <div className="empty">
           <h1>Please sign up an account...</h1>
         </div>
-      ) : (
-        <div className="main">
-          {posts}
-          {/* <Posts /> */}
+      ) :
+      ( */}
+      <div className="main">
+        <div>
+          <form action="" className="sortFunction">
+            <span>Search</span>
+            <input
+              className="admininput"
+              type="search"
+              onChange={handleChange}
+              value={display.query}
+              placeholder="enter the text here"
+            />
+
+            <span>SortBy:</span>
+            <select
+              defaultValue={"title"}
+              onChange={(e) => sortBy(e.target.value)}
+            >
+              <option value="DEFAULT" disabled>
+                None
+              </option>
+              <option value="title">Title</option>
+              <option value="description">Description</option>
+            </select>
+
+            <span>Sort By</span>
+            <select
+              defaultValue={"DEFAULT"}
+              onChange={(e) => updateReports(e.target.value)}
+            >
+              <option value="DEFAULT" disabled>
+                None
+              </option>
+              <option value="ascending">Ascending</option>
+              <option value="descending">Descending</option>
+            </select>
+          </form>
         </div>
-      )}
+        {posts}
+      </div>
+
       <Footer />
     </div>
   );
