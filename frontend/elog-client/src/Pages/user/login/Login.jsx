@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useAsyncError } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { useFormik } from "formik";
@@ -16,6 +16,9 @@ const formSchema = Yup.object().shape({
 
 export default function Login() {
   const dispatch = useDispatch();
+  const refreshPage=()=>{
+    window.location.reload(false);
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -33,7 +36,13 @@ export default function Login() {
   //redirct the user after login
   const store = useSelector((state) => state?.users);
   const { usersAuth, loading, serverErr, appErr } = store;
-  if (usersAuth) return <Navigate to="/profile" />;
+  if (usersAuth) return <Navigate to="/" />;
+  // useEffect(() => {
+  //   if (usersAuth) {
+  //     refreshPage();
+  //     return <Navigate to="/" />;
+  //   }
+  // }, []);
 
   return (
     <div className="auth">

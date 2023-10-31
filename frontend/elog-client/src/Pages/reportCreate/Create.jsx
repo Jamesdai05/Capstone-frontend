@@ -40,6 +40,8 @@ export default function CreateReport() {
     onSubmit: (values) => {
       // console.log(values);
       dispatch(createPostAction(values));
+
+      navigate("/");
     },
     validationSchema: formSchema,
   });

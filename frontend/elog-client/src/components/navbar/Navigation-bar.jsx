@@ -9,6 +9,8 @@ import CreateReport from "../../Pages/reportCreate/Create";
 import Postdetail from "../Post/Postdetails/Postdetail";
 
 const Navigation = () => {
+  // JSON.parse(localStorage.getItem("userInfo")).user === "6540665fd397936ded19a193" ? ;
+
   return (
     <div>
       <Navbar
@@ -38,9 +40,9 @@ const Navigation = () => {
               <Nav.Link as={Link} to={"/profile"} element={<Profile />}>
                 Profile
               </Nav.Link>
-              <Nav.Link as={Link} to={"/admin"} element={<Admin />}>
+             { JSON.parse(localStorage.getItem("userInfo"))?.user === "6540665fd397936ded19a193" ? <Nav.Link as={Link} to={"/admin"} element={<Admin />}>
                 Admin
-              </Nav.Link>
+              </Nav.Link> : null }
             </Nav>
             <Nav>
               <Nav.Link as={Link} to={"/auth/login"} element={<Login />}>
