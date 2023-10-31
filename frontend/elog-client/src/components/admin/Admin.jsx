@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import postSlices from "../../redux/slices/reports/postSlices";
-import axios from "axios";
+// import axios from "axios";
 import { baseURL } from "../../utils/baseUrl";
-import { setNestedObjectValues } from "formik";
 
 export default function Admin() {
   //store store sortedBy order
@@ -23,6 +21,7 @@ export default function Admin() {
 
   // console.log("test")
   console.log(reports);
+  // console.log(page.list);
 
   const makeApiCall = async () => {
     let response = await fetch(`${baseURL}/api/posts`);
@@ -35,7 +34,7 @@ export default function Admin() {
   useEffect(() => {
     makeApiCall();
   }, []);
-
+  // this is form query.
   const handleChange = (e) => {
     e.preventDefault();
     const results = reports.filter((report) => {
@@ -55,35 +54,35 @@ export default function Admin() {
 
   // console.log(page.list);
 
-  const sortFunction = (results, sortType, sortByField) => {
+  function sortFunction(results, sortType, sortByField) {
     if (sortType === "ascending") {
       results.sort((a, b) => (a[sortByField] < b[sortByField] ? -1 : 1));
     } else if (sortType === "descending") {
       results.sort((a, b) => (b[sortByField] > a[sortByField] ? 1 : -1));
     }
     return results;
-  };
+  }
 
   // Drop down to sort reports in asending or descending on title.
-  const updateReports = (e) => {
+  function updateReports(e) {
     setSortType(e);
     setPage({
-      query: e.target.value, //page.query
+      query: page.query, //page.query
       list: !result
         ? sortFunction(reports, e, sortByField)
         : sortFunction(reports, e, sortByField),
     });
-  };
+  }
 
-  const sortBy = (e) => {
+  function sortBy(e) {
     setSortByField(e);
     setPage({
-      query: e.target.value,
+      query: page.value,
       list: !result
         ? sortFunction(reports, sortType, e)
         : sortFunction(result, sortType, e),
     });
-  };
+  }
 
   return (
     <div>

@@ -10,7 +10,6 @@ import { baseURL } from "../../utils/baseUrl";
 import { useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 
-
 export default function Home() {
   const [reports, setReports] = useState([]);
 
@@ -56,11 +55,16 @@ export default function Home() {
   return (
     <div>
       <Header />
-      { !usersAuth ? <div className="empty"><h1>Please sign up an account...</h1></div> :
-      <div className="main">
-        {posts}
-        {/* <Posts /> */}
-      </div> }
+      {!usersAuth ? (
+        <div className="empty">
+          <h1>Please sign up an account...</h1>
+        </div>
+      ) : (
+        <div className="main">
+          {posts}
+          {/* <Posts /> */}
+        </div>
+      )}
       <Footer />
     </div>
   );
