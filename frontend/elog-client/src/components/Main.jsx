@@ -11,6 +11,8 @@ import Postdetail from "./Post/Postdetails/Postdetail";
 // import UpdateReport from "./Post/updateComp/UpdateReport";
 import Test from "./Post/updateComp/Test";
 import UpdateReport from "./Post/updateComp/UpdateReport";
+import ImgUpload from "./test/ImgUpload";
+
 
 const Main = () => {
   return (
@@ -19,13 +21,14 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateReport />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/admin" element={<AuthRoute/>}/>
+        <Route path="/admin" element={<AuthRoute />} />
         <Route path="auth/login" element={<Login />} />
         <Route path="auth/register" element={<Registration />} />
         <Route path="posts/:id" element={<Postdetail />} />
         {/* <Route path="updatepost/:id" element={<UpdateReport />} /> */}
         <Route path="updatepost/:id" element={<UpdateReport />} />
         <Route path="deletepost/:id" element={<Postdetail />} />
+        <Route path="/imgupload" element={<ImgUpload />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
