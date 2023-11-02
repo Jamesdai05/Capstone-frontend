@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { baseURL } from "../../utils/baseUrl";
+import styled from "styled-components";
 
 
 //form validation
@@ -175,7 +176,7 @@ export default function CreateReport() {
               onChange={(e) => setDescription(e.target.value)}
               type="text"
             ></input> */}
-            <Dropzone onDrop={(acceptFiles)=>{formik.setFieldValue("photo",acceptFiles[0])}}
+            {/* <Dropzone onDrop={(acceptFiles)=>{formik.setFieldValue("photo",acceptFiles[0])}}
               accept="image/jpeg, image/png" onChange={formik.handleChange("photo")}></Dropzone>
               {({getRootProps,getInputProps})=>(
                 <div className="fileContainer">
@@ -184,7 +185,32 @@ export default function CreateReport() {
                   <p className="text-gray-300 text-lg cursor-pointer ">Click here to select an image</p>
                   </div>
                 </div>
-              )}
+              )} */}
+            {/* <Container className="container bg-gray-700">
+              <Dropzone
+                onBlur={formik.handleBlur("image")}
+                accept="image/jpeg, image/png"
+                onDrop={(acceptedFiles) => {
+                  formik.setFieldValue("image", acceptedFiles[0]);
+                }}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <div className="container">
+                    <div
+                      {...getRootProps({
+                        className: "dropzone",
+                        onDrop: (event) => event.stopPropagation(),
+                      })}
+                    >
+                      <input {...getInputProps()} />
+                      <p className="text-gray-300 text-lg cursor-pointer hover:text-gray-500">
+                        Click here to select image
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </Dropzone>
+            </Container> */}
           </div>
           <div className="create-title">
             <label htmlFor="Title">Title:</label>
@@ -220,6 +246,33 @@ export default function CreateReport() {
               placeholder="Enter the content here"
             />
             <p className="text-danger">{formik?.touched?.description}</p>
+          </div>
+          <div className="fileupload">
+            <Container className="container bg-gray-700">
+              <Dropzone
+                onBlur={formik.handleBlur("photo")}
+                accept="image/jpeg, image/png"
+                onDrop={(acceptedFiles) => {
+                  formik.setFieldValue("image", acceptedFiles[0]);
+                }}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <div className="container">
+                    <div
+                      {...getRootProps({
+                        className: "dropzone",
+                        onDrop: (event) => event.stopPropagation(),
+                      })}
+                    >
+                      <input {...getInputProps()} />
+                      <p className="text-gray-600 text-lg cursor-pointer hover:text-gray-500">
+                        Click here to select image
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </Dropzone>
+            </Container>
           </div>
           <div>
             <Button variant="primary" type="submit">
