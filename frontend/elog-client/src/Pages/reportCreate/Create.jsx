@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import "./report.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+// import { useState } from "react";
 // import { Navigate } from "react-router-dom";
 // import Selection from "../../components/Dropdown/Dropdown";
-
 import { createPostAction } from "../../redux/slices/reports/postSlices";
 import { useNavigate } from "react-router-dom";
+// import ImgUpload from "../../components/test/ImgUpload";
+import { useState } from "react";
+import axios from "axios";
+import { baseURL } from "../../utils/baseUrl";
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -18,11 +22,26 @@ const formSchema = Yup.object().shape({
   category:Yup.string().required("Cateogry is required!")
 });
 
-export default function CreateReport() {
-  const dispatch = useDispatch();
-  // const [userInfo, setUserInfo] = useState("");
 
-  // useEffect(() => {
+//file uploading
+// function ImgUpload() {
+//   const [file, setFile] = useState();
+//   const [description, setDescription] = useState("");
+//   const [images, setImages] = useState([]);
+
+//   const submit = async (event) => {
+//     event.preventDefault();
+//     const result = await postImage({ image: file, description });
+//     setImages([result.image, ...images]);
+//   };
+
+//   const fileSelected = (event) => {
+//     const file = event.target.files[0];
+//     setFile(file);
+//   };
+
+// }
+// useEffect(() => {
   //   const temp = JSON.parse(localStorage.getItem("userInfo"));
   //   console.log(temp);
   //   // setUserInfo(temp);
@@ -30,16 +49,56 @@ export default function CreateReport() {
   //   console.log(temp.user);
   // }, []);
   // const userId = userInfo.user
+
+export default function CreateReport() {
+  const [file,setFile] = useState()
+  const [images, setImages] = useState([]);
+  const dispatch = useDispatch();
+  // const [userInfo, setUserInfo] = useState("");
+
+
+  async function postImage({ image, description }) {
+    const formData = new FormData();
+    formData.append("image", image);
+    // formData.append("description", description);
+
+    const result = await axios.post(
+      `${baseURL}/api/posts/imageupload`,
+      formData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    );
+    return result.data;
+  }
+
+  const submit = async (event) => {
+    event.preventDefault();
+    const result = await postImage({ image: file});
+    setImages([result.image, ...images]);
+  };
+
+  const fileSelected = (event) => {
+    const file = event.target.files[0];
+    setFile(file);
+  };
+
+
+
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       title: "",
       category: "",
       description: "",
+      file:null,
       user: JSON.parse(localStorage.getItem("userInfo")).user,
     },
     onSubmit: (values) => {
       console.log(values);
+
+      const result = postImage({ image: file});
+      setImages([result.image, ...images]);
+      console.log(images)
+
       dispatch(createPostAction(values));
       // console.log(values)
       navigate("/");
@@ -88,6 +147,15 @@ export default function CreateReport() {
               autoComplete="category"
             />
             {/* <Selection /> */}
+          </div>
+          <div className="imageUpload">
+            <label htmlFor="file">File:</label>
+            <input onChange={fileSelected} type="file" id="file" accept="image/*"></input>
+            {/* <input
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              type="text"
+            ></input> */}
           </div>
           <div className="create-title">
             <label htmlFor="Title">Title:</label>

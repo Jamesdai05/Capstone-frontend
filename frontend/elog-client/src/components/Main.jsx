@@ -12,6 +12,7 @@ import Postdetail from "./Post/Postdetails/Postdetail";
 import Test from "./Post/updateComp/Test";
 import UpdateReport from "./Post/updateComp/UpdateReport";
 import ImgUpload from "./test/ImgUpload";
+import ImgTest from "./test/ImgTest";
 
 
 const Main = () => {
@@ -29,6 +30,7 @@ const Main = () => {
         <Route path="updatepost/:id" element={<UpdateReport />} />
         <Route path="deletepost/:id" element={<Postdetail />} />
         <Route path="/imgupload" element={<ImgUpload />} />
+        <Route path="/imgtest" element={<ImgTest />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
