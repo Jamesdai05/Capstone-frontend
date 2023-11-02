@@ -180,7 +180,8 @@ export default function CreateReport() {
               {({getRootProps,getInputProps})=>(
                 <div className="fileContainer">
                   <div {...getRootProps({className:"dropzone",onDrop:event=>event.stopPropagation(),})}>
-                  <input {...getInputProps()} /><p>Click here to select image</p>
+                  <input {...getInputProps()} />
+                  <p className="text-gray-300 text-lg cursor-pointer ">Click here to select an image</p>
                   </div>
                 </div>
               )}
