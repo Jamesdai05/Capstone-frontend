@@ -14,7 +14,13 @@ export const createPostAction = createAsyncThunk(
     };
     try {
       console.log("abc");
-      const data = await axios.post(`${baseURL}/api/posts`, post, config);
+
+      const formData = new FormData();
+      formData.append("title", post?.title);
+      formData.append("description", post?.description);
+      formData.append("category", post?.category);
+      formData.append("photo", post?.photo);
+      const data = await axios.post(`${baseURL}/api/posts`, formData, config);
       console.log("2");
       // console.log(data);
       return data;
