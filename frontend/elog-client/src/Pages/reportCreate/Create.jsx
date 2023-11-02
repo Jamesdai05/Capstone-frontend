@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { baseURL } from "../../utils/baseUrl";
+import Dropzone from "react-"
+
 
 //form validation
 const formSchema = Yup.object().shape({
@@ -151,8 +153,9 @@ export default function CreateReport() {
             />
             {/* <Selection /> */}
           </div>
+
           <div className="imageUpload">
-            <label htmlFor="file">File:</label>
+            {/* <label htmlFor="file">File:</label>
             <input
               // value={formik.values.file}
               // onChange ={formik.handleChange("file")}
@@ -165,12 +168,13 @@ export default function CreateReport() {
               type="file"
               id="file"
               accept="image/*"
-            ></input>
+            ></input> */}
             {/* <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               type="text"
             ></input> */}
+
           </div>
           <div className="create-title">
             <label htmlFor="Title">Title:</label>
