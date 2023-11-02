@@ -74,6 +74,7 @@ export default function CreateReport() {
     event.preventDefault();
     const result = await postImage({ image: file});
     setImages([result.image, ...images]);
+
   };
 
   const fileSelected = (event) => {
@@ -98,6 +99,8 @@ export default function CreateReport() {
       const result = postImage({ image: file});
       setImages([result.image, ...images]);
       console.log(images)
+      console.log(file);
+      // formik.setFieldValue("file", event.currentTarget.files[0]);
 
       dispatch(createPostAction(values));
       // console.log(values)
@@ -150,7 +153,19 @@ export default function CreateReport() {
           </div>
           <div className="imageUpload">
             <label htmlFor="file">File:</label>
-            <input onChange={fileSelected} type="file" id="file" accept="image/*"></input>
+            <input
+              // value={formik.values.file}
+              // onChange ={formik.handleChange("file")}
+              onChange={(event) => {
+                fileSelected(event);
+                formik.setFieldValue("file", event.currentTarget.files[0]);
+              }}
+              onBlur={formik.handleBlur("file")}
+              // onChange={fileSelected}
+              type="file"
+              id="file"
+              accept="image/*"
+            ></input>
             {/* <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -198,6 +213,12 @@ export default function CreateReport() {
             </Button>
           </div>
         </form>
+        {/* <div>
+          <img
+            src="https://capstonbucket.s3.ap-southeast-1.amazonaws.com/b1d12603016f281593a748ce21f6c546"
+            alt="img-test"
+          />
+        </div> */}
       </div>
     </>
   );
