@@ -35,9 +35,28 @@ const formSchema = Yup.object().shape({
   // }, []);
   // const userId = userInfo.user
 
+//css for dropzone
+
+const Container = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-width: 2px;
+  border-radius: 2px;
+  border-style: dashed;
+  background-color: #fafafa;
+  color: #bdbdbd;
+border-color:'red'
+  transition: border 0.24s ease-in-out;
+`;
+
+
+
 export default function CreateReport() {
-  const [file,setFile] = useState()
-  const [images, setImages] = useState([]);
+  // const [file,setFile] = useState()
+  // const [images, setImages] = useState([]);
   const dispatch = useDispatch();
   // const [userInfo, setUserInfo] = useState("");
 
@@ -156,7 +175,15 @@ export default function CreateReport() {
               onChange={(e) => setDescription(e.target.value)}
               type="text"
             ></input> */}
-            <Dropzone onChange={formik.handleChange("image")}></Dropzone>
+            <Dropzone onDrop={(acceptFiles)=>{formik.setFieldValue("photo",acceptFiles[0])}}
+              accept="image/jpeg, image/png" onChange={formik.handleChange("photo")}></Dropzone>
+              {({getRootProps,getInputProps})=>(
+                <div className="fileContainer">
+                  <div {...getRootProps({className:"dropzone",onDrop:event=>event.stopPropagation(),})}>
+                  <input {...getInputProps()} /><p>Click here to select image</p>
+                  </div>
+                </div>
+              )}
           </div>
           <div className="create-title">
             <label htmlFor="Title">Title:</label>
