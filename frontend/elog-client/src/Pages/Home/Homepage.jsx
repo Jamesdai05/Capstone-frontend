@@ -34,7 +34,7 @@ export default function Home() {
   useEffect(() => {
     makeApiCall();
     console.log(reports);
-  }, [reports]);
+  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();

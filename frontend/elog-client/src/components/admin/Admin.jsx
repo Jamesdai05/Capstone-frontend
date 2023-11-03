@@ -129,6 +129,7 @@ export default function Admin() {
         })} */}
         {page.list.length === 0 && <h2>Empty list!!!</h2>}
       </ul>
+      <h1>Dashboard Under Construction</h1>
     </div>
   );
 }
