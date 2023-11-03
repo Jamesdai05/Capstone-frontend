@@ -20,9 +20,11 @@ export const createPostAction = createAsyncThunk(
       formData.append("description", post?.description);
       formData.append("category", post?.category);
       formData.append("photo", post?.photo);
+      
+      console.log(formData,post)
       const data = await axios.post(`${baseURL}/api/posts`, formData, config);
       console.log("2");
-      // console.log(data);
+      console.log(data);
       return data;
     } catch (error) {
       if (!error?.response) throw error;

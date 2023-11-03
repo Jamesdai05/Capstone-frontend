@@ -33,16 +33,20 @@ export default function Home() {
 
   useEffect(() => {
     makeApiCall();
-  }, []);
+    console.log(reports);
+  }, [reports]);
 
   const handleChange = (e) => {
     e.preventDefault();
     const results = reports.filter((report) => {
-      if (e.target.value === "") return reports;
-      //set the sortByField for the non-null
-      return report[sortByField]
+      console.log(e.target.value)
+      if (e.target?.value) {return report[sortByField]
         .toLowerCase()
-        .includes(e.target.value.toLowerCase());
+        .includes(e.target.value.toLowerCase());}
+        else{
+      //set the sortByField for the non-null
+      return reports;
+        }
     });
     setResult(results);
 
@@ -74,7 +78,7 @@ export default function Home() {
   function sortBy(e) {
     setSortByField(e);
     setDisplay({
-      query: display.value,
+      query: display.query,
       list: !result
         ? sortFunction(reports, sortType, e)
         : sortFunction(result, sortType, e),

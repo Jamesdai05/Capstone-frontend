@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import "./report.css";
 import { useFormik } from "formik";
@@ -60,7 +60,7 @@ export default function CreateReport() {
   // const [images, setImages] = useState([]);
   const dispatch = useDispatch();
   // const [userInfo, setUserInfo] = useState("");
-
+  //
 
   // async function postImage({ image, description }) {
   //   const formData = new FormData();
@@ -124,22 +124,7 @@ export default function CreateReport() {
       </div>
       <div>
         <form id="createReport" onSubmit={formik.handleSubmit}>
-          {/* <div className="prepopulate">
-            <label htmlFor="UserId">USER ID</label><br></br>
-            <input
-              value={formik.values.userid}
-              onChange={formik.handleChange("userid")}
-              onBlur={formik.handleBlur("userid")}
-              readOnly = {true}
-              className="createReport"
-              type="text"
-              placeholder="USER ID"
-              id="userid"
-              name="userid"
-              autoComplete="userid"
-            />
-          </div> */}
-          <div className="cat">
+          {/* <div className="cat">
             <label htmlFor="Category">Category:</label>
             <br></br>
             <input
@@ -152,10 +137,27 @@ export default function CreateReport() {
               id="category"
               name="category"
               autoComplete="category"
-            />
-            {/* <Selection /> */}
+            /> */}
+          {/* <Selection /> */}
+          {/* </div> */}
+          <div>
+            <label htmlFor="category">Category:</label>
+            <select name="category" id="category"
+            // onBlur={formik.handleBlur("category")}
+            // onChange={formik.handleChange("category")}
+            // value={formik.values.category}>
+            >
+              <option>Please select an category</option>
+              <option value="Metrology">Metrology</option>
+              <option value="QA Related<">QA Related</option>
+              <option value="Common Enginnering">Common Enginnering</option>
+              <option value="Production Enginnering">
+                Production Enginnering
+              </option>
+              <option value="Product Development">Product Development</option>
+              <option value="Equipment">Equipment</option>
+            </select>
           </div>
-
           <div className="imageUpload">
             {/* <label htmlFor="file">File:</label>
             <input
@@ -253,7 +255,7 @@ export default function CreateReport() {
                 onBlur={formik.handleBlur("photo")}
                 accept="image/jpeg, image/png"
                 onDrop={(acceptedFiles) => {
-                  formik.setFieldValue("image", acceptedFiles[0]);
+                  formik.setFieldValue("photo", acceptedFiles[0]);
                 }}
               >
                 {({ getRootProps, getInputProps }) => (
@@ -280,12 +282,12 @@ export default function CreateReport() {
             </Button>
           </div>
         </form>
-        {/* <div>
-          <img
+        <div>
+          {/* <img
             src="https://capstonbucket.s3.ap-southeast-1.amazonaws.com/b1d12603016f281593a748ce21f6c546"
             alt="img-test"
-          />
-        </div> */}
+          /> */}
+        </div>
       </div>
     </>
   );
