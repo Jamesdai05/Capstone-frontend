@@ -124,29 +124,16 @@ export default function CreateReport() {
       </div>
       <div>
         <form id="createReport" onSubmit={formik.handleSubmit}>
-          {/* <div className="cat">
-            <label htmlFor="Category">Category:</label>
-            <br></br>
-            <input
-              value={formik.values.category}
-              onChange={formik.handleChange("category")}
-              onBlur={formik.handleBlur("category")}
-              className="createReport"
-              type="text"
-              placeholder="Enter the category here"
-              id="category"
-              name="category"
-              autoComplete="category"
-            /> */}
+
           {/* <Selection /> */}
           {/* </div> */}
           <div>
             <label htmlFor="category">Category:</label>
             <select name="category" id="category"
-            // onBlur={formik.handleBlur("category")}
-            // onChange={formik.handleChange("category")}
-            // value={formik.values.category}>
-            >
+            onBlur={formik.handleBlur("category")}
+            onChange={formik.handleChange("category")}
+            value={formik.values.category}>
+
               <option>Please select an category</option>
               <option value="Metrology">Metrology</option>
               <option value="QA Related<">QA Related</option>
